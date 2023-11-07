@@ -19,7 +19,7 @@
 			<Item on:click={() => showRecordPaymentCallback(receiverName, debtAmount, payerName)}>
 				<Text>
 					<PrimaryText><span style="color: gray">pay to</span> {receiverName}</PrimaryText>
-					<SecondaryText class="error-text">${absRounded(debtAmount)}</SecondaryText>
+					<SecondaryText class="error-text">€{absRounded(debtAmount)}</SecondaryText>
 				</Text>
 				<Graphic
 					style="margin-left: auto; margin-right: 0; background-image: url({getMemberAvatarURL(
