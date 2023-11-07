@@ -16,22 +16,22 @@
 		<Paper class="paper-demo" elevation={5}>
 			<Title>ℹ️ about</Title>
 			<Content style="white-space: pre-line;">
-				split your bills easily! splitio is an open-source webapp built for tracking debts and payments quickly, without any user accounts.
+Divisez vos factures facilement ! guillaumemercyvenal est une application Web  conçue pour suivre rapidement les dettes et les paiements, sans aucun compte utilisateur. toutes les informations sont partagées de manière p2p , alors assurez-vous de vous connecter avec vos amis en même temps si quelque chose ne va pas.
 
-				all info is shared in a p2p fashion (like a torrent), so make sure to connect with your friends at the same time if something goes wrong.
+Contact : 
 
-				built by cryptoboid with SvelteKit and GunDB.
-				<Button
-					on:click={() => {}}
-					variant="raised"
-					href="https://github.com/cryptoboid/splitio"
-					target="_blank"
-					rel="noopener noreferrer"
-					style="display: flex; margin-top: 1rem"
-				>
-					<Label>GitHub</Label>
-					<Icon class="material-icons">open_in_new</Icon>
-				</Button>
+<a href="https://www.guillaumemercyvenal.fr">https://www.guillaumemercyvenal.fr</a>
+
+
+Guillaume Mercy 
+
+Tel : 06 08 15 55 11 (24h / 24h)
+
+<a href="https://guillaumemercy40.vsites.com">https://guillaumemercy40.vsites.com</a>
+
+<a href="mailto:guillaume.mercy040@orange.fr">guillaume.mercy040@orange.fr</a>
+
+			
 			</Content>
 		</Paper>
 	</div>
