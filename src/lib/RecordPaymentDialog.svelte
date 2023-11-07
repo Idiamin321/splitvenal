@@ -38,7 +38,7 @@
 				/>
 			</Item>
 		</List>
-		<p>this will record a payment of ${roundedDebt} in the group</p>
+		<p>this will record a payment of €{roundedDebt} in the group</p>
 	</Content>
 	<Actions>
 		<Button use={[InitialFocus]}>
