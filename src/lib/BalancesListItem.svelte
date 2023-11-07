@@ -14,7 +14,7 @@
 		<PrimaryText>{payerName}</PrimaryText>
 		{#if amount !== 0.0}
 			<SecondaryText class={amount < 0 ? 'error-text' : 'success-text'}>
-				{amount < 0 ? 'owes' : 'receives'} ${absRounded(amount)}
+				{amount < 0 ? 'owes' : 'receives'} €{absRounded(amount)}
 			</SecondaryText>
 		{:else}
 			<SecondaryText>
