@@ -30,7 +30,7 @@
 				<Textfield bind:value={inputName} />
 			</Cell>
 			<Cell span={12}>
-				enter the € amount:
+				enter the € amount :
 				<Textfield type="number" bind:value={inputAmount} />
 			</Cell>
 			<Cell span={12}>
