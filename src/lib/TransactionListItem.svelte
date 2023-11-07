@@ -5,7 +5,7 @@
 	export let transaction = {};
 	export let onDeleteCallback: Function | undefined = undefined;
 
-	$: isSettlement = transaction.title === undefined;
+	€: isSettlement = transaction.title === undefined;
 </script>
 
 <div>
@@ -16,12 +16,12 @@
 		{#if !isSettlement}
 			<Text>
 				<PrimaryText>{transaction.title}</PrimaryText>
-				<SecondaryText>${transaction.amount} by {transaction.paidBy}</SecondaryText>
+				<SecondaryText>€{transaction.amount} by {transaction.paidBy}</SecondaryText>
 			</Text>
 		{:else}
 			<Text>
-				<PrimaryText>{`💵 paid to ${transaction.receivedBy}`}</PrimaryText>
-				<SecondaryText>${absRounded(transaction.amount)} from {transaction.paidBy}</SecondaryText>
+				<PrimaryText>{`💵 paid to €{transaction.receivedBy}`}</PrimaryText>
+				<SecondaryText>€{absRounded(transaction.amount)} from {transaction.paidBy}</SecondaryText>
 			</Text>
 		{/if}
 		{#if onDeleteCallback}
