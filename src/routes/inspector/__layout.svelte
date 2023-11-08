@@ -38,7 +38,7 @@
 	<div class="container">
 		<slot />
 	</div>
-	<div class="mdc-typography--caption footer">made with ❤️ by cryptoboid</div>
+	<div class="mdc-typography--caption footer">Abdoul</div>
 </AutoAdjust>
 
 <style>
