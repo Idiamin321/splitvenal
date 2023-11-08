@@ -123,7 +123,7 @@ et la soirée  entre copines </p>
 			}}
 		>
 			<Icon class="material-icons">add</Icon>
-			<Label>create group</Label>
+			<Label>create groupe</Label>
 		</Button>
 		<!-- <div class="mdc-typography--body1">or paste your group id here:</div>
 		<Paper class="solo-paper" elevation={5}>
