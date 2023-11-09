@@ -12,27 +12,27 @@
 </script>
 
 <script lang="ts">
-	import SvelteSeo from 'svelte-seo';
-	import { onMount } from 'svelte';
-	import Fab, { Icon as FabIcon } from '@smui/fab';
-	import List, { Item, Text, Meta, Graphic } from '@smui/list';
-	import Snackbar, { Label, SnackbarComponentDev } from '@smui/snackbar';
-	import { initAppDB } from '$lib/_modules/initGun';
 	import AddExpenseDialog from '$lib/AddExpenseDialog.svelte';
 	import AddMemberDialog from '$lib/AddMemberDialog.svelte';
-	import { getMemberAvatarURL } from '$lib/_modules/utils';
-	import ViewBalancesDialog from '$lib/ViewBalancesDialog.svelte';
-	import Chip, { Set, LeadingIcon, Text as ChipText } from '@smui/chips';
-	import { deleteSecure, onSecure, putSecure, setSecure } from '$lib/_modules/secure';
-	import { secretKey, groupDB, groupStore, resetGroupStore } from '$lib/_modules/stores';
-	import LoadingSpinnerOverlay from '$lib/LoadingSpinnerOverlay.svelte';
-	import { storeRecentGroup } from '$lib/_modules/recentGroupsStorage';
-	import SyncIssuesDialog from '$lib/SyncIssuesDialog.svelte';
-	import TransactionsList from '$lib/TransactionsList.svelte';
-	import { PLACEHOLDER_GROUP_NAME } from '$lib/_modules/constants';
-	import { GroupNodeStates } from '$lib/_modules/types';
 	import GroupNotFoundDialog from '$lib/GroupNotFoundDialog.svelte';
 	import GroupNotesDialog from '$lib/GroupNotesDialog.svelte';
+	import LoadingSpinnerOverlay from '$lib/LoadingSpinnerOverlay.svelte';
+	import SyncIssuesDialog from '$lib/SyncIssuesDialog.svelte';
+	import TransactionsList from '$lib/TransactionsList.svelte';
+	import ViewBalancesDialog from '$lib/ViewBalancesDialog.svelte';
+	import { PLACEHOLDER_GROUP_NAME } from '$lib/_modules/constants';
+	import { initAppDB } from '$lib/_modules/initGun';
+	import { storeRecentGroup } from '$lib/_modules/recentGroupsStorage';
+	import { deleteSecure, onSecure, putSecure, setSecure } from '$lib/_modules/secure';
+	import { groupDB, groupStore, resetGroupStore, secretKey } from '$lib/_modules/stores';
+	import { GroupNodeStates } from '$lib/_modules/types';
+	import { getMemberAvatarURL } from '$lib/_modules/utils';
+	import Chip, { Text as ChipText, LeadingIcon, Set } from '@smui/chips';
+	import Fab, { Icon as FabIcon } from '@smui/fab';
+	import List, { Graphic, Item, Meta, Text } from '@smui/list';
+	import Snackbar, { Label, SnackbarComponentDev } from '@smui/snackbar';
+	import { onMount } from 'svelte';
+	import SvelteSeo from 'svelte-seo';
 
 	export let groupId: string;
 
@@ -173,7 +173,7 @@
 
 	const putGroupNotes = (noteValue: string, onCompletion: Function) => {
 		let node = $groupDB.get('groupNotes');
-		if (!noteValue) deleteSecure(node, onCompletion)
+		if (!noteValue) deleteSecure(node, onCompletion);
 		else putSecure(node, noteValue, $secretKey, onCompletion);
 	};
 
@@ -271,10 +271,7 @@
 
 <SyncIssuesDialog bind:openDialog={openSyncIssuesDialog} />
 
-<GroupNotesDialog
-	bind:openDialog={openGroupNotesDialog}
-	putNotesCallback={putGroupNotes}
-/>
+<GroupNotesDialog bind:openDialog={openGroupNotesDialog} putNotesCallback={putGroupNotes} />
 
 <Snackbar bind:this={copiedLinkSnackbar}>
 	<Label>📋 link copied to clipboard, now share it!</Label>
