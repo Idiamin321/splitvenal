@@ -1,19 +1,13 @@
 import { serialize } from 'cookie';
 import { createSession, getUserByEmail } from './_db';
 
-interface User {
-	email: string;
-	password: string;
-}
-
-interface Session {
-	id: string;
-}
-
+/** @type {import('@sveltejs/kit').RequestHandler} */
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const post = async ({ request }: any) => {
-	const { email, password } = (await request.json()) as { email: string; password: string };
-	const user = (await getUserByEmail(email)) as User | null;
+export async function post(requestEvent) {
+	const { body } = requestEvent;
+	const { email, password } = body;
+	const user = await getUserByEmail(email);
+
 	// ⚠️ CAUTION: Do not store a plain password like this. Use proper hashing and salting.
 	if (!user || user.password !== password) {
 		return {
@@ -23,7 +17,8 @@ export const post = async ({ request }: any) => {
 			}
 		};
 	}
-	const { id } = (await createSession(email)) as Session;
+
+	const { id } = await createSession(email);
 	return {
 		status: 200,
 		headers: {
@@ -41,4 +36,4 @@ export const post = async ({ request }: any) => {
 			}
 		}
 	};
-};
+}

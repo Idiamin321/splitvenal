@@ -2,10 +2,12 @@
 	/**
 	 * @type {import('@sveltejs/kit').Load}
 	 */
-	export async function load({ page }) {
+
+	export async function load({ page, session }) {
 		return {
 			props: {
-				groupId: page.params.groupid
+				groupId: page.params.groupid,
+				user: session.user
 			}
 		};
 	}
@@ -14,6 +16,7 @@
 <script lang="ts">
 	import AddExpenseDialog from '$lib/AddExpenseDialog.svelte';
 	import AddMemberDialog from '$lib/AddMemberDialog.svelte';
+	import EditMemberDialog from '$lib/EditMemberDialog.svelte';
 	import GroupNotFoundDialog from '$lib/GroupNotFoundDialog.svelte';
 	import GroupNotesDialog from '$lib/GroupNotesDialog.svelte';
 	import LoadingSpinnerOverlay from '$lib/LoadingSpinnerOverlay.svelte';
@@ -36,6 +39,8 @@
 
 	export let groupId: string;
 
+	let selectedMemberName: string = '';
+	let openEditMemberDialog: boolean = false;
 	let openAddMemberDialog: boolean = false;
 	let openAddExpenseDialog: boolean = false;
 	let openViewBalancesDialog: boolean = false;
@@ -87,7 +92,6 @@
 		$secretKey = window.location.hash;
 		const GROUPID = groupId || 'unknown group';
 		$groupDB = appDB.get(GROUPID);
-
 		// detect group not found
 		$groupDB.once(
 			(val) => {
@@ -110,10 +114,12 @@
 		onSecure(
 			$groupDB.get('members').map(),
 			$secretKey,
-			(plain, key) => ($groupStore.members[plain.name] = plain),
+			(plain, key) => {
+				$groupStore.members[plain.name] = plain;
+			},
 			(key) => {
 				delete $groupStore.members[key];
-				$groupStore.members = $groupStore.members;
+				$groupStore.members = { ...$groupStore.members };
 			}
 		);
 
@@ -171,6 +177,30 @@
 		setSecure($groupDB.get('members'), { name: memberName }, $secretKey);
 	};
 
+	const editMember = (newName: string, onCompletion: Function) => {
+		if (!selectedMemberName) return;
+
+		let node = $groupDB.get('members').get(selectedMemberName);
+		if (!newName) deleteSecure(node, onCompletion);
+		else
+			deleteSecure(node, () => {
+				putSecure(node, { name: newName }, $secretKey, onCompletion);
+			});
+
+		openEditMemberDialog = false;
+	};
+
+	const deleteMember = (onCompletion?: Function) => {
+		let node = $groupDB.get('members').get(selectedMemberName);
+		deleteSecure(node, onCompletion);
+
+		openEditMemberDialog = false;
+	};
+
+	const openEditMemberDialogHandler = (memberName: string) => {
+		selectedMemberName = memberName;
+		openEditMemberDialog = true;
+	};
 	const putGroupNotes = (noteValue: string, onCompletion: Function) => {
 		let node = $groupDB.get('groupNotes');
 		if (!noteValue) deleteSecure(node, onCompletion);
@@ -229,7 +259,12 @@
 		<Item class="rounded-item">
 			<Graphic style="background-image: url({getMemberAvatarURL(member.name)});" />
 			<Text>{member.name}</Text>
-			<!-- <Meta class="material-icons">info</Meta> -->
+			<Meta
+				on:click={() => {
+					openEditMemberDialogHandler(member.name);
+				}}
+				class="material-icons">info</Meta
+			>
 		</Item>
 	{/each}
 	<Item on:click={() => (openAddMemberDialog = true)} class="rounded-item">
@@ -252,6 +287,13 @@
 
 <GroupNotFoundDialog {groupNodeState} />
 
+<!-- add member dialog -->
+<EditMemberDialog
+	bind:openDialog={openEditMemberDialog}
+	editCallback={editMember}
+	deleteCallback={deleteMember}
+	memberName={selectedMemberName}
+/>
 <!-- add member dialog -->
 <AddMemberDialog bind:openDialog={openAddMemberDialog} addCallback={addMember} />
 

@@ -23,7 +23,7 @@
 			// session from getSession hook will otherwise not be set before navigation
 			// that would trigger redirect from /protected back to /sign-in
 			$session = body;
-			await goto('/protected');
+			await goto('/');
 		}
 		error = body.message;
 	}

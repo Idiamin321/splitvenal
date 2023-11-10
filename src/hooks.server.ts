@@ -1,9 +1,8 @@
-import type { GetSession } from '@sveltejs/kit';
 import { parse } from 'cookie';
 import { getSession as getSessionFromApi } from './routes/api/_db';
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const handle = async ({ event, resolve }: any) => {
+/** @type {import('@sveltejs/kit').Handle} */
+export async function handle({ event, resolve }) {
 	const cookies = parse(event.request.headers.get('cookie') || '');
 
 	if (cookies.session_id) {
@@ -16,9 +15,10 @@ export const handle = async ({ event, resolve }: any) => {
 
 	event.locals.user = null;
 	return resolve(event);
-};
+}
 
-export const getSession: GetSession = (event) => {
+/** @type {import('@sveltejs/kit').GetSession} */
+export function getSession(event) {
 	return event?.locals?.user
 		? {
 				user: {
@@ -26,4 +26,4 @@ export const getSession: GetSession = (event) => {
 				}
 		  }
 		: {};
-};
+}
