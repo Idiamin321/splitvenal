@@ -1,11 +1,11 @@
 <script context="module">
 	export async function load() {
-	  return {
-		status: 301,
-		redirect: `/`,
-	  }
+		return {
+			status: 301,
+			redirect: `/`
+		};
 	}
-  </script>
+</script>
 
 <svelte:head>
 	<title>splitio | redirecting...</title>

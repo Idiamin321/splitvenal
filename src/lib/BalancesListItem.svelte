@@ -17,9 +17,7 @@
 				{amount < 0 ? 'owes' : 'receives'} €{absRounded(amount)}
 			</SecondaryText>
 		{:else}
-			<SecondaryText>
-				no debt
-			</SecondaryText>
+			<SecondaryText>no debt</SecondaryText>
 		{/if}
 	</Text>
 	<Meta class="material-icons">{isExpanded ? 'expand_less' : 'expand_more'}</Meta>
