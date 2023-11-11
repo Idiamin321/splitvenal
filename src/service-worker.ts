@@ -1,4 +1,3 @@
-
 /// <reference lib="webworker" />
 
 import { build, files, timestamp } from '$service-worker';

@@ -34,7 +34,8 @@
 	{#if transactions.length > maxShownTx}
 		<Item
 			class="rounded-item"
-			on:click={() => (maxShownTx += Math.min(transactions.length - maxShownTx, TRANSACTIONS_INC_MAX_SHOW))}
+			on:click={() =>
+				(maxShownTx += Math.min(transactions.length - maxShownTx, TRANSACTIONS_INC_MAX_SHOW))}
 			style="max-height: 48px; color: grey"
 		>
 			<Graphic class="material-icons" style="width: 1.75rem;">expand_more</Graphic>

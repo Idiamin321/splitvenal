@@ -5,7 +5,19 @@ import { PLACEHOLDER_GROUP_NAME } from './constants';
 
 export const secretKey = writable('');
 export const groupDB: Writable<IGunChainReference | undefined> = writable(undefined);
-export const groupStore = writable({ expenses: {}, payments: {}, members: {}, groupInfo: { name: PLACEHOLDER_GROUP_NAME }, groupNotes: '' });
+export const groupStore = writable({
+	expenses: {},
+	payments: {},
+	members: {},
+	groupInfo: { name: PLACEHOLDER_GROUP_NAME },
+	groupNotes: ''
+});
 export function resetGroupStore() {
-    groupStore.set({ expenses: {}, payments: {}, members: {}, groupInfo: { name: PLACEHOLDER_GROUP_NAME }, groupNotes: '' });
+	groupStore.set({
+		expenses: {},
+		payments: {},
+		members: {},
+		groupInfo: { name: PLACEHOLDER_GROUP_NAME },
+		groupNotes: ''
+	});
 }

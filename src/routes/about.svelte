@@ -16,22 +16,18 @@
 		<Paper class="paper-demo" elevation={5}>
 			<Title>ℹ️ about</Title>
 			<Content style="white-space: pre-line;">
-Divisez vos factures facilement ! guillaumemercyvenal est une application Web  conçue pour suivre rapidement les dettes et les paiements, sans aucun compte utilisateur. toutes les informations sont partagées de manière p2p , alors assurez-vous de vous connecter avec vos amis en même temps si quelque chose ne va pas.
+				Divisez vos factures facilement ! guillaumemercyvenal est une application Web conçue pour
+				suivre rapidement les dettes et les paiements, sans aucun compte utilisateur. toutes les
+				informations sont partagées de manière p2p , alors assurez-vous de vous connecter avec vos
+				amis en même temps si quelque chose ne va pas. Contact :
 
-Contact : 
+				<a href="https://www.guillaumemercyvenal.fr">https://www.guillaumemercyvenal.fr</a>
 
-<a href="https://www.guillaumemercyvenal.fr">https://www.guillaumemercyvenal.fr</a>
+				Guillaume Mercy Tel : 06 08 15 55 11 (24h / 24h)
 
+				<a href="https://guillaumemercy40.vsites.com">https://guillaumemercy40.vsites.com</a>
 
-Guillaume Mercy 
-
-Tel : 06 08 15 55 11 (24h / 24h)
-
-<a href="https://guillaumemercy40.vsites.com">https://guillaumemercy40.vsites.com</a>
-
-<a href="mailto:guillaume.mercy040@orange.fr">guillaume.mercy040@orange.fr</a>
-
-			
+				<a href="mailto:guillaume.mercy040@orange.fr">guillaume.mercy040@orange.fr</a>
 			</Content>
 		</Paper>
 	</div>

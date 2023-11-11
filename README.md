@@ -1,4 +1,3 @@
-
 <p align="center">
     <img alt="splitio" height="75" src="./static/favicon.png">
     <h1 align="center">splitio</h1>
@@ -31,6 +30,7 @@ built with SvelteKit and GunDB.
 3. send your friends the long url to start sharing bills! no accounts required
 
 ## 🌟 showcase
+
 <table>
 <tr>
     <a href=""><img width="21%" src="./screenshots/screen1.png"/></a>
@@ -49,6 +49,7 @@ built with SvelteKit and GunDB.
 ## 📝 next steps
 
 some extra desired features/fixes are:
+
 - better storage persistance with ["persistent" mode](https://developer.mozilla.org/en-US/docs/Web/API/Storage_API#box_modes)
 - implement own relays with [write protections](https://github.com/cryptoboid/splitio/issues/19) --> [in progress!](https://github.com/cryptoboid/splitio/commit/786445f79cd4a10ea9762dbfcb2ed24737086c2d)
 - ~~compute who-owes-what~~ (done!)

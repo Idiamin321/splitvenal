@@ -2,40 +2,48 @@
 	/**
 	 * @type {import('@sveltejs/kit').Load}
 	 */
-	export async function load({ page }) {
+
+	export async function load({ page, session }) {
 		return {
 			props: {
-				groupId: page.params.groupid
+				groupId: page.params.groupid,
+				user: session.user
 			}
 		};
 	}
 </script>
 
 <script lang="ts">
-	import SvelteSeo from 'svelte-seo';
-	import { onMount } from 'svelte';
-	import Fab, { Icon as FabIcon } from '@smui/fab';
-	import List, { Item, Text, Meta, Graphic } from '@smui/list';
-	import Snackbar, { Label, SnackbarComponentDev } from '@smui/snackbar';
-	import { initAppDB } from '$lib/_modules/initGun';
 	import AddExpenseDialog from '$lib/AddExpenseDialog.svelte';
 	import AddMemberDialog from '$lib/AddMemberDialog.svelte';
-	import { getMemberAvatarURL } from '$lib/_modules/utils';
-	import ViewBalancesDialog from '$lib/ViewBalancesDialog.svelte';
-	import Chip, { Set, LeadingIcon, Text as ChipText } from '@smui/chips';
-	import { deleteSecure, onSecure, putSecure, setSecure } from '$lib/_modules/secure';
-	import { secretKey, groupDB, groupStore, resetGroupStore } from '$lib/_modules/stores';
-	import LoadingSpinnerOverlay from '$lib/LoadingSpinnerOverlay.svelte';
-	import { storeRecentGroup } from '$lib/_modules/recentGroupsStorage';
-	import SyncIssuesDialog from '$lib/SyncIssuesDialog.svelte';
-	import TransactionsList from '$lib/TransactionsList.svelte';
-	import { PLACEHOLDER_GROUP_NAME } from '$lib/_modules/constants';
-	import { GroupNodeStates } from '$lib/_modules/types';
+	import EditMemberDialog from '$lib/EditMemberDialog.svelte';
 	import GroupNotFoundDialog from '$lib/GroupNotFoundDialog.svelte';
 	import GroupNotesDialog from '$lib/GroupNotesDialog.svelte';
+	import LoadingSpinnerOverlay from '$lib/LoadingSpinnerOverlay.svelte';
+	import SyncIssuesDialog from '$lib/SyncIssuesDialog.svelte';
+	import TransactionsList from '$lib/TransactionsList.svelte';
+	import ViewBalancesDialog from '$lib/ViewBalancesDialog.svelte';
+	import { PLACEHOLDER_GROUP_NAME } from '$lib/_modules/constants';
+	import { initAppDB } from '$lib/_modules/initGun';
+	import { storeRecentGroup } from '$lib/_modules/recentGroupsStorage';
+	import { deleteSecure, onSecure, putSecure, setSecure } from '$lib/_modules/secure';
+	import { groupDB, groupStore, resetGroupStore, secretKey } from '$lib/_modules/stores';
+	import { GroupNodeStates } from '$lib/_modules/types';
+	import { getMemberAvatarURL } from '$lib/_modules/utils';
+	import Chip, { Text as ChipText, LeadingIcon, Set } from '@smui/chips';
+	import Fab, { Icon as FabIcon } from '@smui/fab';
+	import List, { Graphic, Item, Meta, Text } from '@smui/list';
+	import Snackbar, { Label, SnackbarComponentDev } from '@smui/snackbar';
+	import { onMount } from 'svelte';
+	import SvelteSeo from 'svelte-seo';
+	export let user;
 
+	import { session } from '$app/stores';
+	$session.user;
 	export let groupId: string;
 
+	let selectedMemberName = {};
+	let openEditMemberDialog: boolean = false;
 	let openAddMemberDialog: boolean = false;
 	let openAddExpenseDialog: boolean = false;
 	let openViewBalancesDialog: boolean = false;
@@ -87,7 +95,6 @@
 		$secretKey = window.location.hash;
 		const GROUPID = groupId || 'unknown group';
 		$groupDB = appDB.get(GROUPID);
-
 		// detect group not found
 		$groupDB.once(
 			(val) => {
@@ -110,7 +117,9 @@
 		onSecure(
 			$groupDB.get('members').map(),
 			$secretKey,
-			(plain, key) => ($groupStore.members[plain.name] = plain),
+			(plain, key) => {
+				$groupStore.members[key] = plain;
+			},
 			(key) => {
 				delete $groupStore.members[key];
 				$groupStore.members = $groupStore.members;
@@ -171,9 +180,31 @@
 		setSecure($groupDB.get('members'), { name: memberName }, $secretKey);
 	};
 
+	const editMember = (newName: string, onCompletion: Function) => {
+		if (!selectedMemberName) return;
+
+		let node = $groupDB.get('members').get(selectedMemberName.key);
+		if (!newName) deleteSecure(node, onCompletion);
+		else putSecure(node, { name: newName }, $secretKey, onCompletion);
+
+		openEditMemberDialog = false;
+	};
+
+	const deleteMember = (onCompletion?: Function) => {
+		let node = $groupDB.get('members').get(selectedMemberName.key);
+		deleteSecure(node, onCompletion);
+		openEditMemberDialog = false;
+	};
+
+	const openEditMemberDialogHandler = (key, memberName: string) => {
+		selectedMemberName = memberName;
+		selectedMemberName.key = key;
+		openEditMemberDialog = true;
+		console.log('Member', user);
+	};
 	const putGroupNotes = (noteValue: string, onCompletion: Function) => {
 		let node = $groupDB.get('groupNotes');
-		if (!noteValue) deleteSecure(node, onCompletion)
+		if (!noteValue) deleteSecure(node, onCompletion);
 		else putSecure(node, noteValue, $secretKey, onCompletion);
 	};
 
@@ -229,7 +260,14 @@
 		<Item class="rounded-item">
 			<Graphic style="background-image: url({getMemberAvatarURL(member.name)});" />
 			<Text>{member.name}</Text>
-			<!-- <Meta class="material-icons">info</Meta> -->
+			{#if user}
+				<Meta
+					on:click={() => {
+						openEditMemberDialogHandler(key, member);
+					}}
+					class="material-icons">info</Meta
+				>
+			{/if}
 		</Item>
 	{/each}
 	<Item on:click={() => (openAddMemberDialog = true)} class="rounded-item">
@@ -253,6 +291,13 @@
 <GroupNotFoundDialog {groupNodeState} />
 
 <!-- add member dialog -->
+<EditMemberDialog
+	bind:openDialog={openEditMemberDialog}
+	editCallback={editMember}
+	deleteCallback={deleteMember}
+	memberName={selectedMemberName.name}
+/>
+<!-- add member dialog -->
 <AddMemberDialog bind:openDialog={openAddMemberDialog} addCallback={addMember} />
 
 <!-- add expense dialog -->
@@ -271,10 +316,7 @@
 
 <SyncIssuesDialog bind:openDialog={openSyncIssuesDialog} />
 
-<GroupNotesDialog
-	bind:openDialog={openGroupNotesDialog}
-	putNotesCallback={putGroupNotes}
-/>
+<GroupNotesDialog bind:openDialog={openGroupNotesDialog} putNotesCallback={putGroupNotes} />
 
 <Snackbar bind:this={copiedLinkSnackbar}>
 	<Label>📋 link copied to clipboard, now share it!</Label>

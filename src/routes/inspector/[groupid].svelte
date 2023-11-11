@@ -12,12 +12,12 @@
 </script>
 
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { initAppDB } from '$lib/_modules/initGun';
 	import { onSecure } from '$lib/_modules/secure';
-	import { secretKey, groupDB, groupStore } from '$lib/_modules/stores';
-	import Textfield from '@smui/textfield';
+	import { groupDB, groupStore, secretKey } from '$lib/_modules/stores';
 	import Button, { Label } from '@smui/button';
+	import Textfield from '@smui/textfield';
+	import { onMount } from 'svelte';
 
 	export let groupId: string;
 
@@ -43,7 +43,7 @@
 		let lsValue = localStorage.getItem('gun/');
 		if (lsValue !== null) localStorageInfo = JSON.parse(lsValue);
 
-		var DBOpenRequest = window.indexedDB.open('radata', 1);
+		let DBOpenRequest = window.indexedDB.open('radata', 1);
 		DBOpenRequest.onerror = function (event) {
 			console.error('Error loading database.');
 		};
@@ -111,7 +111,10 @@
 
 <div class="mdc-typography--headline5">group inspector</div>
 <div class="mdc-typography--body1">use this utility to inspect your group's local copy.</div>
-<div class="mdc-typography--body1">keep in mind that the localStorage and indexedDB views are snapshots on first load. if you connect to Gun, you may need to refresh the page to update the info</div>
+<div class="mdc-typography--body1">
+	keep in mind that the localStorage and indexedDB views are snapshots on first load. if you connect
+	to Gun, you may need to refresh the page to update the info
+</div>
 
 <div class="mdc-typography--headline5">view from localStorage</div>
 

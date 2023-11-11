@@ -40,18 +40,18 @@ et la soirée  entre copines </p>
 
 
 <script lang="ts">
-	import SvelteSeo from 'svelte-seo';
-	import { Icon } from '@smui/common';
-	import SplitioIcon from '$lib/SplitioIcon.svelte';
-	import Button, { Label } from '@smui/button';
 	import CreateGroupDialog from '$lib/CreateGroupDialog.svelte';
-	import { getSEA, initAppDB } from '$lib/_modules/initGun';
-	import { redirectToAbout, redirectToGroup } from '$lib/_modules/utils';
-	import { putSecure } from '$lib/_modules/secure';
-	import IconButton from '@smui/icon-button/IconButton.svelte';
-	import type { IGunStaticSEA } from 'gun/types/static/sea';
 	import LoadingSpinnerOverlay from '$lib/LoadingSpinnerOverlay.svelte';
 	import RecentGroupsList from '$lib/RecentGroupsList.svelte';
+	import SplitioIcon from '$lib/SplitioIcon.svelte';
+	import { getSEA, initAppDB } from '$lib/_modules/initGun';
+	import { putSecure } from '$lib/_modules/secure';
+	import { redirectToAbout, redirectToGroup, redirectToLogin } from '$lib/_modules/utils';
+	import Button, { Label } from '@smui/button';
+	import { Icon } from '@smui/common';
+	import IconButton from '@smui/icon-button/IconButton.svelte';
+	import type { IGunStaticSEA } from 'gun/types/static/sea';
+	import SvelteSeo from 'svelte-seo';
 
 	let groupValue = '';
 	let openCreateGroupDialog: boolean = false;
@@ -91,11 +91,12 @@ et la soirée  entre copines </p>
 </script>
 
 <SvelteSeo
-	title='splitio | home'
-	description='split your bills easily! splitio is an open-source webapp built for tracking debts and payments quickly, without any user accounts.'
+	title="splitio | home"
+	description="split your bills easily! splitio is an open-source webapp built for tracking debts and payments quickly, without any user accounts."
 	openGraph={{
 		title: 'splitio | split your bills easily!',
-		description: 'splitio is an open-source webapp built for tracking debts and payments quickly, without any user accounts.',
+		description:
+			'splitio is an open-source webapp built for tracking debts and payments quickly, without any user accounts.',
 		url: 'https://github.com/cryptoboid/splitio',
 		type: 'website',
 		images: [
@@ -144,6 +145,9 @@ et la soirée  entre copines </p>
 			</Fab>
 		</Paper> -->
 	</div>
+	<IconButton on:click={() => redirectToLogin()} class="material-icons user-btn" aria-label="person"
+		>person</IconButton
+	>
 	<IconButton
 		on:click={() => redirectToAbout()}
 		class="material-icons info-btn"
@@ -213,5 +217,10 @@ et la soirée  entre copines </p>
 		position: absolute;
 		top: 1rem;
 		right: 1rem;
+	}
+	* :global(.user-btn) {
+		position: absolute;
+		top: 1rem;
+		right: 4rem;
 	}
 </style>

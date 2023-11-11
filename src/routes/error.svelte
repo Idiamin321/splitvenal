@@ -1,9 +1,9 @@
 <script context="module">
-    /** @type {import('@sveltejs/kit').Load} */
+	/** @type {import('@sveltejs/kit').Load} */
 	export async function load({ page }) {
 		return {
 			status: 400,
-            error: page.query.get('msg') || 'unknown error'
+			error: page.query.get('msg') || 'unknown error'
 		};
 	}
 </script>

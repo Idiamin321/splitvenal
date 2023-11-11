@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { Item, Graphic, Text, PrimaryText, SecondaryText, Meta } from '@smui/list';
+	import { Graphic, Item, Meta, PrimaryText, SecondaryText, Text } from '@smui/list';
 	import { absRounded, timestampToShortDate } from './_modules/utils';
 
 	export let transaction = {};
 	export let onDeleteCallback: Function | undefined = undefined;
 
-	€: isSettlement = transaction.title === undefined;
+	$: isSettlement = transaction.title === undefined;
 </script>
 
 <div>

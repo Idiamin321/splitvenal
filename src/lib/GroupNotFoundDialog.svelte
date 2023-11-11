@@ -25,9 +25,8 @@
 		<Title id="fullscreen-title">❌ group not found</Title>
 	</Header>
 	<Content id="default-focus-content" class="mdc-typography--body1" style="white-space: pre-line;">
-		couldn't find group, please check the URL is correct.
-		
-		if this group exists, please ask a friend to open this URL at the same time to refresh the info.
+		couldn't find group, please check the URL is correct. if this group exists, please ask a friend
+		to open this URL at the same time to refresh the info.
 	</Content>
 	<Actions>
 		<Button on:click={() => goto('/')}>
