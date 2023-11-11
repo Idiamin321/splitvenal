@@ -11,7 +11,7 @@
 		"url": "https://github.com/cryptoboid/splitio.git"
 	},
 	"scripts": {
-		"dev": "svelte-kit dev --port 9000 --host",
+		"dev": "svelte-kit dev --port 9000 --host --https",
 		"build": "svelte-kit build",
 		"preview": "svelte-kit preview",
 		"check": "svelte-check --tsconfig ./tsconfig.json",

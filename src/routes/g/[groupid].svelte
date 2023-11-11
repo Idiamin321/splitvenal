@@ -36,7 +36,10 @@
 	import Snackbar, { Label, SnackbarComponentDev } from '@smui/snackbar';
 	import { onMount } from 'svelte';
 	import SvelteSeo from 'svelte-seo';
+	export let user;
 
+	import { session } from '$app/stores';
+	$session.user;
 	export let groupId: string;
 
 	let selectedMemberName = {};
@@ -185,15 +188,11 @@
 		else putSecure(node, { name: newName }, $secretKey, onCompletion);
 
 		openEditMemberDialog = false;
-		console.log('groupMember', $groupStore.members);
-		console.log('Member', members);
 	};
 
 	const deleteMember = (onCompletion?: Function) => {
 		let node = $groupDB.get('members').get(selectedMemberName.key);
 		deleteSecure(node, onCompletion);
-		console.log('groupMember', $groupStore.members);
-		console.log('Member', members);
 		openEditMemberDialog = false;
 	};
 
@@ -201,7 +200,7 @@
 		selectedMemberName = memberName;
 		selectedMemberName.key = key;
 		openEditMemberDialog = true;
-		console.log(selectedMemberName);
+		console.log('Member', user);
 	};
 	const putGroupNotes = (noteValue: string, onCompletion: Function) => {
 		let node = $groupDB.get('groupNotes');
@@ -261,13 +260,14 @@
 		<Item class="rounded-item">
 			<Graphic style="background-image: url({getMemberAvatarURL(member.name)});" />
 			<Text>{member.name}</Text>
-			<Meta
-				on:click={() => {
-					openEditMemberDialogHandler(key, member);
-					console.log('members', members);
-				}}
-				class="material-icons">info</Meta
-			>
+			{#if user}
+				<Meta
+					on:click={() => {
+						openEditMemberDialogHandler(key, member);
+					}}
+					class="material-icons">info</Meta
+				>
+			{/if}
 		</Item>
 	{/each}
 	<Item on:click={() => (openAddMemberDialog = true)} class="rounded-item">
