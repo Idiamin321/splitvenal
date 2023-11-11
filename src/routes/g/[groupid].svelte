@@ -39,7 +39,7 @@
 
 	export let groupId: string;
 
-	let selectedMemberName: string = '';
+	let selectedMemberName = {};
 	let openEditMemberDialog: boolean = false;
 	let openAddMemberDialog: boolean = false;
 	let openAddExpenseDialog: boolean = false;
@@ -115,11 +115,11 @@
 			$groupDB.get('members').map(),
 			$secretKey,
 			(plain, key) => {
-				$groupStore.members[plain.name] = plain;
+				$groupStore.members[key] = plain;
 			},
 			(key) => {
 				delete $groupStore.members[key];
-				$groupStore.members = { ...$groupStore.members };
+				$groupStore.members = $groupStore.members;
 			}
 		);
 
@@ -180,26 +180,28 @@
 	const editMember = (newName: string, onCompletion: Function) => {
 		if (!selectedMemberName) return;
 
-		let node = $groupDB.get('members').get(selectedMemberName);
+		let node = $groupDB.get('members').get(selectedMemberName.key);
 		if (!newName) deleteSecure(node, onCompletion);
-		else
-			deleteSecure(node, () => {
-				putSecure(node, { name: newName }, $secretKey, onCompletion);
-			});
+		else putSecure(node, { name: newName }, $secretKey, onCompletion);
 
 		openEditMemberDialog = false;
+		console.log('groupMember', $groupStore.members);
+		console.log('Member', members);
 	};
 
 	const deleteMember = (onCompletion?: Function) => {
-		let node = $groupDB.get('members').get(selectedMemberName);
+		let node = $groupDB.get('members').get(selectedMemberName.key);
 		deleteSecure(node, onCompletion);
-
+		console.log('groupMember', $groupStore.members);
+		console.log('Member', members);
 		openEditMemberDialog = false;
 	};
 
-	const openEditMemberDialogHandler = (memberName: string) => {
+	const openEditMemberDialogHandler = (key, memberName: string) => {
 		selectedMemberName = memberName;
+		selectedMemberName.key = key;
 		openEditMemberDialog = true;
+		console.log(selectedMemberName);
 	};
 	const putGroupNotes = (noteValue: string, onCompletion: Function) => {
 		let node = $groupDB.get('groupNotes');
@@ -261,7 +263,8 @@
 			<Text>{member.name}</Text>
 			<Meta
 				on:click={() => {
-					openEditMemberDialogHandler(member.name);
+					openEditMemberDialogHandler(key, member);
+					console.log('members', members);
 				}}
 				class="material-icons">info</Meta
 			>
@@ -292,7 +295,7 @@
 	bind:openDialog={openEditMemberDialog}
 	editCallback={editMember}
 	deleteCallback={deleteMember}
-	memberName={selectedMemberName}
+	memberName={selectedMemberName.name}
 />
 <!-- add member dialog -->
 <AddMemberDialog bind:openDialog={openAddMemberDialog} addCallback={addMember} />

@@ -6,10 +6,11 @@
 	export let editCallback: Function = () => {};
 	export let deleteCallback: Function = () => {};
 
-	export let memberName: string = '';
+	export let memberName = '';
 	let editMemberValue = '';
 	let isEditMode = false;
 	let isSaving = false;
+
 	$: editMemberValue = memberName;
 
 	const deleteMembers = () => {
