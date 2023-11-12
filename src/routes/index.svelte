@@ -73,10 +73,7 @@
 
 <div class="homepage-container">
 
-<a href="https://costsplit.incipientinfo.com/">https://costsplit.incipientinfo.com</a><br><br>
-
-<a href="https://costsplit-incipientinfo-com.translate.goog/?_x_tr_sl=en&_x_tr_tl=fr&_x_tr_hl=fr&_x_tr_pto=wapp">https://costsplit-incipientinfo-com.translate.goog/?_x_tr_sl=en&_x_tr_tl=fr&_x_tr_hl=fr&_x_tr_pto=wapp</a><br><br>
-
+<a href="https://guillaumemercyvenal.fr">https://guillaumemercyvenal.fr</a><br><br>
 
 <img src="https://guillaumemercyvideos.fr/gettyimages-151909989-612x612.jpg"><br><br>
 
