@@ -22,7 +22,7 @@
 			href="/"
 		/>
 		<TopTitle style="font-family: Josefin Sans;font-size: x-large;margin-left: -13px;">
-			splitio
+			Guillaume Mercy Venal 
 		</TopTitle>
 	</div>
 {:else}
