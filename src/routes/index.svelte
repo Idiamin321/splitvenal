@@ -1,42 +1,3 @@
-<p>
-
-https://costsplit.incipientinfo.com/
-
-https://costsplit-incipientinfo-com.translate.goog/?_x_tr_sl=en&_x_tr_tl=fr&_x_tr_hl=fr&_x_tr_pto=wapp
-
-
-
-la photo du restaurant au dessus et la femme avec le café qui paye
-
-
-
-le texte comme l'autre 
-
-
-
-Créer Un Groupe
-
-Vous pouvez créer ou rejoindre un groupe dans le but de partager vos dépenses avec vos amis/famille/collègue.
-
-Ajouter Une Personne
-
-Dans le groupe créé, vous pouvez ajouter n nombre de membres avec lesquels vous partagez vos factures/coûts.
-
-Ajouter Une Dépense
-
-Tout membre du groupe peut ajouter ses dépenses individuelles effectuées et il peut également ajouter avec qui il les a partagées.
-
-Coût Partagé
-
-Enfin, vos coûts sont répartis entre vos membres ajoutés avec un calcul précis et chaque membre peut savoir combien d'argent il doit se payer.
-
- 
-
-et dessous on mettra les photos 
-
-la photo de boite de nuit
-
-et la soirée  entre copines </p>
 
 
 <script lang="ts">
@@ -111,6 +72,45 @@ et la soirée  entre copines </p>
 />
 
 <div class="homepage-container">
+<p>
+
+https://costsplit.incipientinfo.com/
+
+https://costsplit-incipientinfo-com.translate.goog/?_x_tr_sl=en&_x_tr_tl=fr&_x_tr_hl=fr&_x_tr_pto=wapp
+
+
+
+la photo du restaurant au dessus et la femme avec le café qui paye
+
+
+
+le texte comme l'autre 
+
+
+
+Créer Un Groupe
+
+Vous pouvez créer ou rejoindre un groupe dans le but de partager vos dépenses avec vos amis/famille/collègue.
+
+Ajouter Une Personne
+
+Dans le groupe créé, vous pouvez ajouter n nombre de membres avec lesquels vous partagez vos factures/coûts.
+
+Ajouter Une Dépense
+
+Tout membre du groupe peut ajouter ses dépenses individuelles effectuées et il peut également ajouter avec qui il les a partagées.
+
+Coût Partagé
+
+Enfin, vos coûts sont répartis entre vos membres ajoutés avec un calcul précis et chaque membre peut savoir combien d'argent il doit se payer.
+
+ 
+
+et dessous on mettra les photos 
+
+la photo de boite de nuit
+
+et la soirée  entre copines </p>
 	<SplitioIcon />
 	<div class="group-text-container">
 		<RecentGroupsList />
