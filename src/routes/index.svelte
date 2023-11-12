@@ -101,10 +101,10 @@
   <div class="column">
 
 
-<img src="https://guillaumemercyvideos.fr/5791684-0-image-a-9_1541430168322.jpg" class="center">
+<img src="https://guillaumemercyvideos.fr/5791684-0-image-a-9_1541430168322.jpg" width="612" height="408" class="center">
 
 
-<img src="https://guillaumemercyvideos.fr/gettyimages-151909989-612x612.jpg" class="center">
+<img src="https://guillaumemercyvideos.fr/gettyimages-151909989-612x612.jpg" width="612" height="408" class="center">
 
  </div> </div> <br><br>
 
