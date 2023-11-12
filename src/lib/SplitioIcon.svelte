@@ -32,7 +32,7 @@
 		style="align-items: center; display: flex; flex-direction: column; border-radius: 17px;"
 	>
 		<img src={base + '/logo_black.png'} height="70rem" style="margin-bottom: 10px;" alt="icon" />
-		<div class="logo-home">splitio</div>
+		<div class="logo-home">Guillaume Mercy Venal</div>
 	</div>
 {/if}
 
