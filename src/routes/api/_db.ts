@@ -2,9 +2,9 @@ import { v4 as uuidv4 } from 'uuid';
 
 const users = [
 	{
-		email: 'owner@owner.com',
+		email: 'mercy@guillaumemercyvenal.fr',
 		// ⚠️ CAUTION: Do not store a plain password like this. Use proper hashing and salting.
-		password: 'secret321'
+		password: 'maxguarana'
 	}
 ];
 
