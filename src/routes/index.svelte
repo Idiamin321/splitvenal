@@ -99,11 +99,12 @@
 
 <div class="row">
   <div class="column">
-    <img src="img_snow.jpg" alt="Snow" style="width:100%">
 
-<img src="https://guillaumemercyvideos.fr/gettyimages-151909989-612x612.jpg">
 
 <img src="https://guillaumemercyvideos.fr/5791684-0-image-a-9_1541430168322.jpg">
+
+
+<img src="https://guillaumemercyvideos.fr/gettyimages-151909989-612x612.jpg">
 
  </div> </div> <br><br>
 
