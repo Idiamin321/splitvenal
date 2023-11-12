@@ -92,13 +92,6 @@
   display: table;
 }
 
-
-.center {
-  width: 100%;
-  margin: auto;
-  display: block;
-}
-
 </style>
 
 <a href="https://guillaumemercyvenal.fr">https://guillaumemercyvenal.fr</a><br><br>
