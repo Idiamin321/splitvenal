@@ -72,7 +72,6 @@
 />
 
 <div class="homepage-container">
-<p>
 
 <a href="https://costsplit.incipientinfo.com/">https://costsplit.incipientinfo.com</a><br><br>
 
@@ -112,7 +111,6 @@
 <img src="https://guillaumemercyvideos.fr/2db4ae90-11ff-11ea-b64f-0ea54698a1a8.jpg"><br><br>
 
 
-</p>
 	<SplitioIcon />
 	<div class="group-text-container">
 		<RecentGroupsList />
