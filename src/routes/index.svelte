@@ -74,43 +74,45 @@
 <div class="homepage-container">
 <p>
 
-https://costsplit.incipientinfo.com/
+<a href="https://costsplit.incipientinfo.com/">https://costsplit.incipientinfo.com</a><br><br>
 
-https://costsplit-incipientinfo-com.translate.goog/?_x_tr_sl=en&_x_tr_tl=fr&_x_tr_hl=fr&_x_tr_pto=wapp
-
-
-
-la photo du restaurant au dessus et la femme avec le café qui paye
+<a href="https://costsplit-incipientinfo-com.translate.goog/?_x_tr_sl=en&_x_tr_tl=fr&_x_tr_hl=fr&_x_tr_pto=wapp">https://costsplit-incipientinfo-com.translate.goog/?_x_tr_sl=en&_x_tr_tl=fr&_x_tr_hl=fr&_x_tr_pto=wapp</a><br><br>
 
 
-
-le texte comme l'autre 
-
+<img src="https://guillaumemercyvideos.fr/gettyimages-151909989-612x612.jpg"><br><br>
 
 
-Créer Un Groupe
+<h3 style="font-weight:bold;">Créer Un Groupe</h3><br><br>
 
-Vous pouvez créer ou rejoindre un groupe dans le but de partager vos dépenses avec vos amis/famille/collègue.
 
-Ajouter Une Personne
+<p>Vous pouvez créer ou rejoindre un groupe dans le but de partager vos dépenses avec vos amis/famille/collègue.</p><br><br>
 
-Dans le groupe créé, vous pouvez ajouter n nombre de membres avec lesquels vous partagez vos factures/coûts.
 
-Ajouter Une Dépense
+<h3 style="font-weight:bold;">Ajouter Une Personne</h3><br><br>
 
-Tout membre du groupe peut ajouter ses dépenses individuelles effectuées et il peut également ajouter avec qui il les a partagées.
 
-Coût Partagé
+<p>Dans le groupe créé, vous pouvez ajouter n nombre de membres avec lesquels vous partagez vos factures/coûts.</p>
 
-Enfin, vos coûts sont répartis entre vos membres ajoutés avec un calcul précis et chaque membre peut savoir combien d'argent il doit se payer.
 
- 
+<h3 style="font-weight:bold;">Ajouter Une Dépense</h3><br><br>
 
-et dessous on mettra les photos 
 
-la photo de boite de nuit
+<p>Tout membre du groupe peut ajouter ses dépenses individuelles effectuées et il peut également ajouter avec qui il les a partagées.</p><br><br>
 
-et la soirée  entre copines </p>
+
+
+<h3 style="font-weight:bold;">Coût Partagé</h3><br><br>
+
+
+<p>Enfin, vos coûts sont répartis entre vos membres ajoutés avec un calcul précis et chaque membre peut savoir combien d'argent il doit se payer.</p><br><br>
+
+
+<img src="https://guillaumemercyvideos.fr/sex-and-the-city-serie-1024x685.jpg"><br><br>
+
+<img src="https://guillaumemercyvideos.fr/2db4ae90-11ff-11ea-b64f-0ea54698a1a8.jpg"><br><br>
+
+
+</p>
 	<SplitioIcon />
 	<div class="group-text-container">
 		<RecentGroupsList />
