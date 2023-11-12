@@ -134,9 +134,12 @@
 <p>Enfin, vos coûts sont répartis entre vos membres ajoutés avec un calcul précis et chaque membre peut savoir combien d'argent il doit se payer.</p><br><br>
 
 
+<div class="row">
+  <div class="column">
 <img src="https://guillaumemercyvideos.fr/sex-and-the-city-serie-1024x685.jpg"  width="612" height="408"><br><br>
 
-<img src="https://guillaumemercyvideos.fr/2db4ae90-11ff-11ea-b64f-0ea54698a1a8.jpg" width="612" height="408"><br><br>
+<img src="https://guillaumemercyvideos.fr/2db4ae90-11ff-11ea-b64f-0ea54698a1a8.jpg" width="612" height="408">
+ </div> </div> <br><br>
 
 
 	<SplitioIcon />
