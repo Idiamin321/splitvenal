@@ -93,6 +93,12 @@
 }
 
 
+.center {
+  width: 100%;
+  margin: auto;
+  display: block;
+}
+
 </style>
 
 <a href="https://guillaumemercyvenal.fr">https://guillaumemercyvenal.fr</a><br><br>
@@ -102,10 +108,10 @@
   <div class="column">
 
 
-<img src="https://guillaumemercyvideos.fr/5791684-0-image-a-9_1541430168322.jpg">
+<img src="https://guillaumemercyvideos.fr/5791684-0-image-a-9_1541430168322.jpg" class="center">
 
 
-<img src="https://guillaumemercyvideos.fr/gettyimages-151909989-612x612.jpg">
+<img src="https://guillaumemercyvideos.fr/gettyimages-151909989-612x612.jpg" class="center">
 
  </div> </div> <br><br>
 
@@ -137,9 +143,9 @@
 
 <div class="row">
   <div class="column">
-<img src="https://guillaumemercyvideos.fr/sex-and-the-city-serie-1024x685.jpg"  width="612" height="408" ><br><br>
+<img src="https://guillaumemercyvideos.fr/sex-and-the-city-serie-1024x685.jpg"  width="612" height="408" class="center" ><br><br>
 
-<img src="https://guillaumemercyvideos.fr/2db4ae90-11ff-11ea-b64f-0ea54698a1a8.jpg" width="612" height="408">
+<img src="https://guillaumemercyvideos.fr/2db4ae90-11ff-11ea-b64f-0ea54698a1a8.jpg" width="612" height="408" class="center">
  </div> </div> <br><br>
 
 
