@@ -161,7 +161,12 @@
 		);
 	});
 
-	const addExpense = async (expenseName: string, expenseAmount: number, memberName: string) => {
+	const addExpense = async (
+		expenseName: string,
+		expenseAmount: number,
+		memberName: string,
+		expenseFor: string
+	) => {
 		const memberExists = memberName in $groupStore.members;
 		if (!memberExists) throw SyntaxError;
 		setSecure(
@@ -170,6 +175,7 @@
 				title: expenseName,
 				amount: expenseAmount,
 				paidBy: memberName,
+				forWhat: expenseFor,
 				timestamp: Date.now()
 			},
 			$secretKey

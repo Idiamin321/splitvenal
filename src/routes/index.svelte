@@ -1,5 +1,3 @@
-
-
 <script lang="ts">
 	import CreateGroupDialog from '$lib/CreateGroupDialog.svelte';
 	import LoadingSpinnerOverlay from '$lib/LoadingSpinnerOverlay.svelte';
@@ -72,75 +70,98 @@
 />
 
 <div class="homepage-container">
+	<style>
+		/* Three image containers (use 25% for four, and 50% for two, etc) */
 
-<style>
+		.column {
+			float: left;
+			width: 33.33%;
+			padding: 5px;
+		}
 
+		/* Clear floats after image containers */
 
-/* Three image containers (use 25% for four, and 50% for two, etc) */
+		.row::after {
+			content: '';
+			clear: both;
+			display: table;
+		}
+	</style>
 
-.column {
-  float: left;
-  width: 33.33%;
-  padding: 5px;
-}
+	<a href="https://guillaumemercyvenal.fr">https://guillaumemercyvenal.fr</a><br /><br />
 
-/* Clear floats after image containers */
+	<div class="row">
+		<div class="column">
+			<img
+				src="https://guillaumemercyvideos.fr/5791684-0-image-a-9_1541430168322.jpg"
+				width="612"
+				height="408"
+				class="center"
+			/>
 
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
+			<img
+				src="https://guillaumemercyvideos.fr/gettyimages-151909989-612x612.jpg"
+				width="612"
+				height="408"
+				class="center"
+			/>
+		</div>
+	</div>
+	<br /><br />
 
-</style>
+	<h3 style="font-weight:bold;">Créer Un Groupe</h3>
+	<br /><br />
 
-<a href="https://guillaumemercyvenal.fr">https://guillaumemercyvenal.fr</a><br><br>
+	<p>
+		Vous pouvez créer ou rejoindre un groupe dans le but de partager vos dépenses avec vos
+		amis/famille/collègue.
+	</p>
+	<br /><br />
 
+	<h3 style="font-weight:bold;">Ajouter Une Personne</h3>
+	<br /><br />
 
-<div class="row">
-  <div class="column">
+	<p>
+		Dans le groupe créé, vous pouvez ajouter n nombre de membres avec lesquels vous partagez vos
+		factures/coûts.
+	</p>
 
+	<h3 style="font-weight:bold;">Ajouter Une Dépense</h3>
+	<br /><br />
 
-<img src="https://guillaumemercyvideos.fr/5791684-0-image-a-9_1541430168322.jpg" width="612" height="408" class="center">
+	<p>
+		Tout membre du groupe peut ajouter ses dépenses individuelles effectuées et il peut également
+		ajouter avec qui il les a partagées.
+	</p>
+	<br /><br />
 
+	<h3 style="font-weight:bold;">Coût Partagé</h3>
+	<br /><br />
 
-<img src="https://guillaumemercyvideos.fr/gettyimages-151909989-612x612.jpg" width="612" height="408" class="center">
+	<p>
+		Enfin, vos coûts sont répartis entre vos membres ajoutés avec un calcul précis et chaque membre
+		peut savoir combien d'argent il doit se payer.
+	</p>
+	<br /><br />
 
- </div> </div> <br><br>
+	<div class="row">
+		<div class="column">
+			<img
+				src="https://guillaumemercyvideos.fr/sex-and-the-city-serie-1024x685.jpg"
+				width="612"
+				height="408"
+				class="center"
+			/><br /><br />
 
-
-<h3 style="font-weight:bold;">Créer Un Groupe</h3><br><br>
-
-
-<p>Vous pouvez créer ou rejoindre un groupe dans le but de partager vos dépenses avec vos amis/famille/collègue.</p><br><br>
-
-
-<h3 style="font-weight:bold;">Ajouter Une Personne</h3><br><br>
-
-
-<p>Dans le groupe créé, vous pouvez ajouter n nombre de membres avec lesquels vous partagez vos factures/coûts.</p>
-
-
-<h3 style="font-weight:bold;">Ajouter Une Dépense</h3><br><br>
-
-
-<p>Tout membre du groupe peut ajouter ses dépenses individuelles effectuées et il peut également ajouter avec qui il les a partagées.</p><br><br>
-
-
-
-<h3 style="font-weight:bold;">Coût Partagé</h3><br><br>
-
-
-<p>Enfin, vos coûts sont répartis entre vos membres ajoutés avec un calcul précis et chaque membre peut savoir combien d'argent il doit se payer.</p><br><br>
-
-
-<div class="row">
-  <div class="column">
-<img src="https://guillaumemercyvideos.fr/sex-and-the-city-serie-1024x685.jpg"  width="612" height="408" class="center" ><br><br>
-
-<img src="https://guillaumemercyvideos.fr/2db4ae90-11ff-11ea-b64f-0ea54698a1a8.jpg" width="612" height="408" class="center">
- </div> </div> <br><br>
-
+			<img
+				src="https://guillaumemercyvideos.fr/2db4ae90-11ff-11ea-b64f-0ea54698a1a8.jpg"
+				width="612"
+				height="408"
+				class="center"
+			/>
+		</div>
+	</div>
+	<br /><br />
 
 	<SplitioIcon />
 	<div class="group-text-container">
