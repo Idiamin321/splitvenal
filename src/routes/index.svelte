@@ -90,7 +90,7 @@
   content: "";
   clear: both;
   display: table;
-  margin-left: 350px;
+  
 }
 
 </style>
@@ -98,7 +98,7 @@
 <a href="https://guillaumemercyvenal.fr">https://guillaumemercyvenal.fr</a><br><br>
 
 
-<div class="row">
+<div class="row" style="margin-left: 350px!important;">
   <div class="column">
 
 
