@@ -87,29 +87,29 @@
  </div> <br><br>
 
 
-<h3 style="font-weight:bold;">Créer Un Groupe</h3><br><br>
+<h1 style="font-weight:bold;">Créer Un Groupe</h1><br><br>
 
 
-<p>Vous pouvez créer ou rejoindre un groupe dans le but de partager vos dépenses avec vos amis/famille/collègue.</p><br><br>
+<p style="font-size:22px;">Vous pouvez créer ou rejoindre un groupe dans le but de partager vos dépenses avec vos amis/famille/collègue.</p><br><br>
 
 
-<h3 style="font-weight:bold;">Ajouter Une Personne</h3><br><br>
+<h1 style="font-weight:bold;">Ajouter Une Personne</h1><br><br>
 
 
-<p>Dans le groupe créé, vous pouvez ajouter n nombre de membres avec lesquels vous partagez vos factures/coûts.</p>
+<p style="font-size:22px;">Dans le groupe créé, vous pouvez ajouter n nombre de membres avec lesquels vous partagez vos factures/coûts.</p>
 
 
-<h3 style="font-weight:bold;">Ajouter Une Dépense</h3><br><br>
+<h1 style="font-weight:bold;">Ajouter Une Dépense</h1><br><br>
 
 
-<p>Tout membre du groupe peut ajouter ses dépenses individuelles effectuées et il peut également ajouter avec qui il les a partagées.</p><br><br>
+<p style="font-size:22px;">Tout membre du groupe peut ajouter ses dépenses individuelles effectuées et il peut également ajouter avec qui il les a partagées.</p><br><br>
 
 
 
-<h3 style="font-weight:bold;">Coût Partagé</h3><br><br>
+<h1 style="font-weight:bold;">Coût Partagé</h1><br><br>
 
 
-<p>Enfin, vos coûts sont répartis entre vos membres ajoutés avec un calcul précis et chaque membre peut savoir combien d'argent il doit se payer.</p><br><br>
+<p style="font-size:22px;">Enfin, vos coûts sont répartis entre vos membres ajoutés avec un calcul précis et chaque membre peut savoir combien d'argent il doit se payer.</p><br><br>
 
 
 <div class="ow" style="display: flex;">
