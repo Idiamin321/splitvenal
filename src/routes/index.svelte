@@ -90,6 +90,7 @@
   content: "";
   clear: both;
   display: table;
+  margin-left: 350px;
 }
 
 </style>
