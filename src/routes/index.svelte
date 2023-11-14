@@ -77,7 +77,7 @@
 <a href="https://guillaumemercyvenal.fr">https://guillaumemercyvenal.fr</a><br><br>
 
 
-<div class="row" style="display: flex;">
+<div class="row" style="display: flex; gap:12px;">
   
 <img src="https://guillaumemercyvideos.fr/5791684-0-image-a-9_1541430168322.jpg" width="612" height="408" class="center">
 
@@ -112,7 +112,7 @@
 <p style="font-size:22px;">Enfin, vos coûts sont répartis entre vos membres ajoutés avec un calcul précis et chaque membre peut savoir combien d'argent il doit se payer.</p><br><br>
 
 
-<div class="ow" style="display: flex;">
+<div class="ow" style="display: flex; gap:12px;">
  
 <img src="https://guillaumemercyvideos.fr/sex-and-the-city-serie-1024x685.jpg"  width="612" height="408" class="center" ><br><br>
 
