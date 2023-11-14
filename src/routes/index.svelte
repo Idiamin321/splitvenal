@@ -73,41 +73,18 @@
 
 <div class="homepage-container">
 
-<style>
-
-
-/* Three image containers (use 25% for four, and 50% for two, etc) */
-
-.column {
-  float: left;
-  width: 33.33%;
-  padding: 5px;
-}
-
-/* Clear floats after image containers */
-
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-  
-}
-
-</style>
 
 <a href="https://guillaumemercyvenal.fr">https://guillaumemercyvenal.fr</a><br><br>
 
 
-<div class="row" style="margin-left: 350px!important;">
-  <div class="column">
-
-
+<div class="row" style="display: inline-block;">
+  
 <img src="https://guillaumemercyvideos.fr/5791684-0-image-a-9_1541430168322.jpg" width="612" height="408" class="center">
 
 
 <img src="https://guillaumemercyvideos.fr/gettyimages-151909989-612x612.jpg" width="612" height="408" class="center">
 
- </div> </div> <br><br>
+ </div> <br><br>
 
 
 <h3 style="font-weight:bold;">Créer Un Groupe</h3><br><br>
