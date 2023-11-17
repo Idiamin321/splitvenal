@@ -1,10 +1,10 @@
 <script lang="ts">
-	import Paper, { Title, Content } from '@smui/paper';
-	import { Item, Text, Meta } from '@smui/list';
-	import { getRecentGroups } from './_modules/recentGroupsStorage';
+	import { Item, Meta, Text } from '@smui/list';
+	import Paper, { Content, Title } from '@smui/paper';
 	import { onMount } from 'svelte';
-	import { redirectToGroup } from './_modules/utils';
 	import { slide } from 'svelte/transition';
+	import { getRecentGroups } from './_modules/recentGroupsStorage';
+	import { redirectToGroup } from './_modules/utils';
 
 	let recentGroups: object[] = [];
 	onMount(() => {

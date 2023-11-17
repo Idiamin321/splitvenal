@@ -23,6 +23,7 @@ export async function onSecure(node, secretKey: string, callback, emptyCallback)
 	node.on(async (data, key) => {
 		if (data) {
 			const plain = await handleDecrypt(data, secretKey);
+
 			callback(plain, key);
 		} else {
 			emptyCallback(key);

@@ -69,12 +69,17 @@
 		</Button>
 		<Button
 			variant="unelevated"
-			disabled={inputName === '' || inputAmount === 0.0 || inputPaidBy === ''}
+			disabled={inputName === '' ||
+				inputAmount === 0.0 ||
+				inputPaidBy === '' ||
+				inputPaidFor === ''}
 			on:click={() => {
-				addCallback(inputName, inputAmount, inputPaidBy);
+				addCallback(inputName, inputAmount, inputPaidBy, inputPaidFor, dateExpense);
 				inputName = '';
 				inputAmount = 0.0;
+				inputPaidFor = '';
 				inputPaidBy = '';
+				dateExpense = '';
 			}}
 		>
 			<Label>add</Label>

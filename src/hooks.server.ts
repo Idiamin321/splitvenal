@@ -1,29 +1,30 @@
-import { parse } from 'cookie';
-import { getSession as getSessionFromApi } from './routes/api/_db';
+import { JWT_ACCESS_SECRET } from '$env/static/private';
+import { db } from '$lib/db/db.server';
+import jwt from 'jsonwebtoken';
 
-/** @type {import('@sveltejs/kit').Handle} */
-export async function handle({ event, resolve }) {
-	const cookies = parse(event.request.headers.get('cookie') || '');
+export const handle = async ({ event, resolve }) => {
+	const authCookie = event.cookies.get('AuthorizationToken');
 
-	if (cookies.session_id) {
-		const session = await getSessionFromApi(cookies.session_id);
-		if (session) {
-			event.locals.user = { email: session.email };
-			return resolve(event);
+	if (authCookie) {
+		const token = authCookie.split(' ')[1];
+		try {
+			const jwtUser = jwt.verify(token, JWT_ACCESS_SECRET);
+			const user = await db.user.findUnique({
+				where: {
+					id: jwtUser.id
+				},
+				select: {
+					id: true,
+					email: true,
+					profilePic: true
+				}
+			});
+			if (user) {
+				event.locals.user = user;
+			}
+		} catch (error) {
+			console.log(error);
 		}
 	}
-
-	event.locals.user = null;
-	return resolve(event);
-}
-
-/** @type {import('@sveltejs/kit').GetSession} */
-export function getSession(event) {
-	return event?.locals?.user
-		? {
-				user: {
-					email: event.locals.user.email
-				}
-		  }
-		: {};
-}
+	return await resolve(event);
+};
