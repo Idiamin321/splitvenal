@@ -8,4 +8,5 @@ node_modules
 !.env.example
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
-.vercel_build_output/ @material/theme @material/typography @smui/button @smui/chips @smui/circular-progress @smui/dialog @smui/fab @smui/icon-button @smui/layout-grid @smui/list @smui/paper @smui/ripple @smui/select @smui/snackbar @smui/tab @smui/tab-bar
+.vercel_build_output/
+static/upload/*
