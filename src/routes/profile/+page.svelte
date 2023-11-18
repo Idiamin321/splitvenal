@@ -1,6 +1,5 @@
 <script>
 	import { enhance } from '$app/forms';
-	import { base } from '$app/paths';
 	import { redirectToAbout } from '$lib/_modules/utils';
 	import Button from '@smui/button';
 	import IconButton from '@smui/icon-button';
@@ -18,8 +17,9 @@
 	<div class="group-text-container">
 		<h1>Change Profile Picture</h1>
 		{#if user.profilePic}
+			<!-- svelte-ignore a11y-img-redundant-alt -->
 			<img
-				src={`${base}/${user.profilePic}`}
+				src={user.profilePic}
 				alt="Profile Picture"
 				class="profile-pic"
 				style="width: 250px; height: auto; margin-bottom: 15px;"

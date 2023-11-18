@@ -1,8 +1,17 @@
 import { db } from '$lib/db/db.server.js';
 import { fail, redirect } from '@sveltejs/kit';
-import fs from 'fs';
+import { v2 as cloudinary } from 'cloudinary';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
+cloudinary.config({
+	cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+	api_key: process.env.CLOUDINARY_API_KEY,
+	api_secret: process.env.CLOUDINARY_API_SECRET
+});
 export const load = async ({ locals }) => {
 	const user = locals.user;
+
 	if (!user) {
 		throw redirect(307, '/sign-in');
 	}
@@ -23,15 +32,14 @@ export const actions = {
 			return fail(400, { missing: true });
 		}
 
-		const filename = Date.now() + '-' + file.name;
-		const filepath = `upload/${filename}`;
-
 		const buffer = Buffer.from(await file.arrayBuffer());
-		fs.writeFileSync(`static/${filepath}`, buffer, 'base64');
+
+		const photoUrl = await cloudinaryUpload(buffer);
+		console.log(photoUrl);
 		await db.user.update({
 			where: { id: userId },
 			data: {
-				profilePic: filepath
+				profilePic: photoUrl.result.url
 			}
 		});
 		return {
@@ -39,3 +47,15 @@ export const actions = {
 		};
 	}
 };
+
+async function cloudinaryUpload(file: any) {
+	return new Promise((resolve, reject) => {
+		cloudinary.uploader.upload_stream({ resource_type: 'image' }, onDone).end(file);
+		function onDone(error, result) {
+			if (error) {
+				return reject({ success: false, error });
+			}
+			return resolve({ success: true, result });
+		}
+	});
+}
