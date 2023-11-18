@@ -65,7 +65,6 @@
 		"@prisma/client": "^5.5.2",
 		"bcryptjs": "^2.4.3",
 		"cloudinary": "^1.41.0",
-		"dotenv": "^16.3.1",
 		"gun": "^0.2020.1235",
 		"jsonwebtoken": "^9.0.2",
 		"prisma": "^5.5.2",

@@ -1,9 +1,7 @@
 import { db } from '$lib/db/db.server.js';
 import { fail, redirect } from '@sveltejs/kit';
 import { v2 as cloudinary } from 'cloudinary';
-import * as dotenv from 'dotenv';
 
-dotenv.config();
 cloudinary.config({
 	cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
 	api_key: process.env.CLOUDINARY_API_KEY,
