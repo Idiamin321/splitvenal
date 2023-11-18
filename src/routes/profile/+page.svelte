@@ -9,7 +9,6 @@
 	const authorizedExtensions = ['.jpg', '.jpeg', '.png', '.webp'];
 
 	const { user } = data;
-	console.log(user);
 </script>
 
 <div class="container">

@@ -9,7 +9,6 @@
 	import Button, { Label } from '@smui/button';
 	import { Icon } from '@smui/common';
 	import IconButton from '@smui/icon-button';
-	import type { IGunStaticSEA } from 'gun/types/static/sea';
 	import SvelteSeo from 'svelte-seo';
 
 	let groupValue = '';
@@ -24,7 +23,7 @@
 	}
 
 	let appDB: any = undefined;
-	let SEA: IGunStaticSEA | undefined = undefined;
+	let SEA: any | undefined = undefined;
 
 	const initGunIfNew = () => {
 		if (!appDB) appDB = initAppDB();
