@@ -13,7 +13,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "vite dev --host",
-		"build": "prisma generate && prisma migrate deploy && vite build",
+		"build": "prisma generate && vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
