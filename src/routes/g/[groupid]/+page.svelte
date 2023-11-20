@@ -206,10 +206,12 @@
 		(a, b) => b[1].timestamp - a[1].timestamp
 	);
 	$: members = Object.entries($groupStore.members);
-
-	const url = user.profilePic;
-	let imageurl = url.replace('upload/', 'upload/w_40,h_40,c_fill/');
-	let bgImage = imageurl;
+	let bgImage = '';
+	if (user) {
+		const url = user.profilePic;
+		let imageurl = url.replace('upload/', 'upload/w_40,h_40,c_fill/');
+		bgImage = imageurl;
+	}
 </script>
 
 <SvelteSeo
@@ -235,12 +237,21 @@
 </svelte:head>
 <div style="display: flex; flex-direction: row; justify-content: space-between;">
 	<div class="mdc-typography--headline5">{$groupStore.groupInfo.name}</div>
-	<ImageAspectContainer>
-		<Image
-			tag="div"
-			style="background-image: url('{bgImage}'); border-radius:10px; width:40px; height:40px"
-		/>
-	</ImageAspectContainer>
+	{#if user}
+		<ImageAspectContainer>
+			<Image
+				tag="div"
+				style="background-image: url('{bgImage}'); border-radius:10px; width:40px; height:40px"
+			/>
+		</ImageAspectContainer>
+	{:else}
+		<ImageAspectContainer>
+			<Image
+				tag="div"
+				style="background-image: url('https://source.boringavatars.com/beam/40$splitneval?colors=4DAB8C,542638,8F244D,C9306B,E86F9E'); border-radius:10px; width:40px; height:40px"
+			/>
+		</ImageAspectContainer>
+	{/if}
 </div>
 <Set
 	{chips}
