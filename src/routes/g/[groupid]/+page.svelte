@@ -236,7 +236,7 @@
 	<title>splitio | {$groupStore.groupInfo.name}</title>
 </svelte:head>
 <div class="headline">
-	<div class="mdc-typography--headline5" style="max-height: 40px; width: 90vw;">
+	<div class="mdc-typography--headline5">
 		{$groupStore.groupInfo.name}
 	</div>
 	{#if user}
@@ -353,6 +353,8 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
+		max-height: 40px;
+		width: 90vw;
 	}
 
 	* :global(.margins) {
