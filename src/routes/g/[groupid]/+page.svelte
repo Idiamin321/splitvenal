@@ -235,8 +235,10 @@
 <svelte:head>
 	<title>splitio | {$groupStore.groupInfo.name}</title>
 </svelte:head>
-<div style="display: flex; flex-direction: row; justify-content: space-between;">
-	<div class="mdc-typography--headline5">{$groupStore.groupInfo.name}</div>
+<div class="headline">
+	<div class="mdc-typography--headline5" style="max-height: 40px; width: 90vw;">
+		{$groupStore.groupInfo.name}
+	</div>
 	{#if user}
 		<ImageAspectContainer>
 			<Image
@@ -345,6 +347,12 @@
 		bottom: 10px;
 		right: 10px;
 		z-index: 1;
+	}
+
+	.headline {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
 	}
 
 	* :global(.margins) {

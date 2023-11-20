@@ -18,11 +18,8 @@
 <div class="container">
 	<!-- Fixed the class name here -->
 	<div class="group-text-container">
-		<div
-			class="mdc-typography--body1"
-			style="display: flex; flex-direction: row-reverse; align-items: center; gap: 32px;"
-		>
-			<h1>Change Profile Picture</h1>
+		<div class="mdc-typography--body1 head-nav">
+			<h1 style="line-height: 35px; letter-spacing: 4;">Change Profile Picture</h1>
 			<Button color="secondary" on:click={() => redirectToGroup(gId, secret)}>
 				<Icon class="material-icons">arrow_back</Icon>
 				<Label>Back</Label>
@@ -127,6 +124,20 @@
 		display: block;
 	}
 
+	.head-nav {
+		display: flex;
+		flex-direction: row-reverse;
+		align-items: center;
+		gap: 32px;
+	}
+	@media screen and (max-width: 600px) {
+		.head-nav {
+			flex-direction: column-reverse; /* Mengubah arah flex menjadi kolom */
+			align-items: center; /* Pusatkan item di tengah */
+			text-align: center; /* Pusatkan teks */
+			gap: 0;
+		}
+	}
 	* :global(.info-btn) {
 		position: absolute;
 		top: 1rem;
