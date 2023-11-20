@@ -352,6 +352,7 @@
 		flex-direction: row;
 		justify-content: space-between;
 		max-height: 40px;
+		width: 96%;
 	}
 
 	* :global(.margins) {
