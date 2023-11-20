@@ -240,12 +240,10 @@
 		{$groupStore.groupInfo.name}
 	</div>
 	{#if user}
-		<ImageAspectContainer>
-			<Image
-				tag="div"
-				style="background-image: url('{bgImage}'); border-radius:10px; width:40px; height:40px"
-			/>
-		</ImageAspectContainer>
+		<Image
+			tag="div"
+			style="background-image: url('{bgImage}'); border-radius:10px; width:40px; height:40px"
+		/>
 	{:else}
 		<ImageAspectContainer>
 			<Image
@@ -354,7 +352,6 @@
 		flex-direction: row;
 		justify-content: space-between;
 		max-height: 40px;
-		width: 90vw;
 	}
 
 	* :global(.margins) {
