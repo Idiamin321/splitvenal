@@ -17,11 +17,11 @@
 	import { getMemberAvatarURL } from '$lib/_modules/utils';
 	import Chip, { Text as ChipText, LeadingIcon, Set } from '@smui/chips';
 	import Fab, { Icon as FabIcon } from '@smui/fab';
+	import { Image, ImageAspectContainer } from '@smui/image-list';
 	import List, { Graphic, Item, Meta, Text } from '@smui/list';
 	import Snackbar, { Label } from '@smui/snackbar';
 	import { onMount } from 'svelte';
 	import SvelteSeo from 'svelte-seo';
-
 	// $session.user;
 	export let data;
 	export let groupId = data.props.groupId;
@@ -206,6 +206,10 @@
 		(a, b) => b[1].timestamp - a[1].timestamp
 	);
 	$: members = Object.entries($groupStore.members);
+
+	const url = user.profilePic;
+	let imageurl = url.replace('upload/', 'upload/w_40,h_40,c_fill/');
+	let bgImage = imageurl;
 </script>
 
 <SvelteSeo
@@ -229,9 +233,15 @@
 <svelte:head>
 	<title>splitio | {$groupStore.groupInfo.name}</title>
 </svelte:head>
-
-<div class="mdc-typography--headline5">{$groupStore.groupInfo.name}</div>
-
+<div style="display: flex; flex-direction: row; justify-content: space-between;">
+	<div class="mdc-typography--headline5">{$groupStore.groupInfo.name}</div>
+	<ImageAspectContainer>
+		<Image
+			tag="div"
+			style="background-image: url('{bgImage}'); border-radius:10px; width:40px; height:40px"
+		/>
+	</ImageAspectContainer>
+</div>
 <Set
 	{chips}
 	style="overflow-x: auto; flex-wrap: nowrap; margin-left: -10px; margin-right: -10px"

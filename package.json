@@ -42,6 +42,7 @@
 		"@smui/dialog": "^7.0.0-beta.15",
 		"@smui/fab": "^7.0.0-beta.15",
 		"@smui/icon-button": "^7.0.0-beta.15",
+		"@smui/image-list": "^7.0.0-beta.15",
 		"@smui/layout-grid": "^7.0.0-beta.15",
 		"@smui/list": "^7.0.0-beta.15",
 		"@smui/paper": "^7.0.0-beta.15",
