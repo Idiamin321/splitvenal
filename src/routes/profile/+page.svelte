@@ -1,20 +1,33 @@
 <script>
 	import { enhance } from '$app/forms';
-	import { redirectToAbout } from '$lib/_modules/utils';
-	import Button from '@smui/button';
+	import { redirectToAbout, redirectToGroup } from '$lib/_modules/utils';
+	import Button, { Icon, Label } from '@smui/button';
 	import IconButton from '@smui/icon-button';
-
+	import { onMount } from 'svelte';
+	let secret;
+	onMount(async () => {
+		secret = window.location.hash;
+	});
 	let error;
 	export let data;
 	const authorizedExtensions = ['.jpg', '.jpeg', '.png', '.webp'];
 
-	const { user } = data;
+	const { user, gId } = data;
 </script>
 
 <div class="container">
 	<!-- Fixed the class name here -->
 	<div class="group-text-container">
-		<h1>Change Profile Picture</h1>
+		<div
+			class="mdc-typography--body1"
+			style="display: flex; flex-direction: row-reverse; align-items: center; gap: 32px;"
+		>
+			<h1>Change Profile Picture</h1>
+			<Button color="secondary" on:click={() => redirectToGroup(gId, secret)}>
+				<Icon class="material-icons">arrow_back</Icon>
+				<Label>Back</Label>
+			</Button>
+		</div>
 		{#if user.profilePic}
 			<!-- svelte-ignore a11y-img-redundant-alt -->
 			<img

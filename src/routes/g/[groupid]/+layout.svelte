@@ -1,11 +1,18 @@
 <script lang="ts">
 	import SplitioIcon from '$lib/SplitioIcon.svelte';
-	import { redirectToProfile } from '$lib/_modules/utils';
+	import { getRecentGroups } from '$lib/_modules/recentGroupsStorage.js';
+	import { redirectToProfile } from '$lib/_modules/utils.js';
 	import IconButton from '@smui/icon-button';
 	import TopAppBar, { AutoAdjust, Row, Section } from '@smui/top-app-bar';
+	import { onMount } from 'svelte';
 
+	let recentGroups: object[] = [];
+	onMount(() => {
+		recentGroups = getRecentGroups();
+	});
 	let topAppBar;
-
+	export let data;
+	export let groupId = data.props.groupId;
 	let lightTheme =
 		typeof window === 'undefined' || window.matchMedia('(prefers-color-scheme: light)').matches;
 	function switchTheme() {
@@ -21,6 +28,11 @@
 			.querySelector<HTMLLinkElement>('link[href="/smui-dark.css"]')
 			?.insertAdjacentElement('afterend', themeLink);
 	}
+
+	const hanldletoProfile = (id, gourps) => {
+		const group = gourps.find((item) => item.groupId === id);
+		if (group) redirectToProfile(id, group.secretKey);
+	};
 </script>
 
 <TopAppBar bind:this={topAppBar} variant="standard">
@@ -30,7 +42,7 @@
 		</Section>
 		<Section align="end">
 			<IconButton
-				on:click={() => redirectToProfile()}
+				on:click={() => hanldletoProfile(groupId, recentGroups)}
 				class="material-icons user-btn"
 				aria-label="person">person</IconButton
 			>

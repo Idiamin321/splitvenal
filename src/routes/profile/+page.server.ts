@@ -7,13 +7,14 @@ cloudinary.config({
 	api_key: process.env.CLOUDINARY_API_KEY,
 	api_secret: process.env.CLOUDINARY_API_SECRET
 });
-export const load = async ({ locals }) => {
+export const load = async ({ locals, url }) => {
+	const gId = url.searchParams.get('g');
 	const user = locals.user;
 
 	if (!user) {
 		throw redirect(307, '/sign-in');
 	}
-	return { user };
+	return { user, gId };
 };
 
 export const actions = {
@@ -40,6 +41,7 @@ export const actions = {
 				profilePic: photoUrl.result.url
 			}
 		});
+
 		return {
 			success: true
 		};
