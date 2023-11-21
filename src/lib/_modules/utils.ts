@@ -6,6 +6,10 @@ export function redirectToGroup(groupID: string, secretKey: string) {
 	// window.location.href = base +
 }
 
+export function redirectToProfile(groupId: string, secretKey: string) {
+	goto(`/profile?g=${groupId}&s=${secretKey}`);
+	// window.location.href = base + 'about';
+}
 export function redirectToAbout() {
 	goto('/about');
 	// window.location.href = base + 'about';

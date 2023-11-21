@@ -1,20 +1,23 @@
 <script lang="ts">
-	import Dialog, { Title, Content, Actions } from '@smui/dialog';
 	import Button, { Label } from '@smui/button';
-	import Textfield from '@smui/textfield';
+	import Dialog, { Actions, Content, Title } from '@smui/dialog';
 	import LayoutGrid, { Cell } from '@smui/layout-grid';
+	import { Graphic } from '@smui/list';
 	import Select, { Option } from '@smui/select';
 	import Icon from '@smui/select/icon';
-	import { Graphic } from '@smui/list';
+	import Textfield from '@smui/textfield';
+	import InputDateExpnse from './InputDateExpnse.svelte';
 	import { getMemberAvatarURL } from './_modules/utils';
 
 	export let openDialog = false;
 	export let addCallback: Function = () => {};
 	export let membersList: Array<Array<string | object>> = [];
 
+	let dateExpense = '';
 	let inputName: string = '';
 	let inputAmount: number = 0.0;
 	let inputPaidBy: string = '';
+	let inputPaidFor: string = '';
 </script>
 
 <Dialog
@@ -30,8 +33,16 @@
 				<Textfield bind:value={inputName} />
 			</Cell>
 			<Cell span={12}>
-				enter the € amount :
+				enter the amount € :
 				<Textfield type="number" bind:value={inputAmount} />
+			</Cell>
+			<Cell span={12}>
+				Paid For :
+				<Textfield bind:value={inputPaidFor} />
+			</Cell>
+			<Cell span={12}>
+				Date paid :
+				<InputDateExpnse bind:value={dateExpense} />
 			</Cell>
 			<Cell span={12}>
 				who payed?
@@ -58,12 +69,17 @@
 		</Button>
 		<Button
 			variant="unelevated"
-			disabled={inputName === '' || inputAmount === 0.0 || inputPaidBy === ''}
+			disabled={inputName === '' ||
+				inputAmount === 0.0 ||
+				inputPaidBy === '' ||
+				inputPaidFor === ''}
 			on:click={() => {
-				addCallback(inputName, inputAmount, inputPaidBy);
+				addCallback(inputName, inputAmount, inputPaidBy, inputPaidFor, dateExpense);
 				inputName = '';
 				inputAmount = 0.0;
+				inputPaidFor = '';
 				inputPaidBy = '';
+				dateExpense = '';
 			}}
 		>
 			<Label>add</Label>

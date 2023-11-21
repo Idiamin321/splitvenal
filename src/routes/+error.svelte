@@ -1,6 +1,7 @@
 <script context="module">
 	/** @type {import('@sveltejs/kit').ErrorLoad} */
 	export function load({ error, status }) {
+		console.log(error);
 		return {
 			props: {
 				message: error.message,
@@ -12,8 +13,8 @@
 
 <script lang="ts">
 	import SplitioIcon from '$lib/SplitioIcon.svelte';
-	import Button, { Label, Icon } from '@smui/button';
-	import Paper, { Title, Content } from '@smui/paper';
+	import Button, { Icon, Label } from '@smui/button';
+	import Paper, { Content, Title } from '@smui/paper';
 	export let message: string = '';
 	export let status: string = '';
 </script>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Dialog, { Header, Title, Content } from '@smui/dialog';
+	import Dialog, { Content, Header, Title } from '@smui/dialog';
 	import IconButton from '@smui/icon-button';
 	import List from '@smui/list';
 	import BalancesListItem from './BalancesListItem.svelte';
@@ -27,9 +27,7 @@
 	$: balances = computeBalances(expensesObj, membersList, paymentsObj);
 	$: payments = computePayments(balances);
 	$: expandedMembers = initExpMembers(membersList);
-
 	// Record Payments Dialog variables
-
 	let openRecordPayment = false;
 	let receiverName = '';
 	let debtAmount = 0.0;
@@ -53,6 +51,7 @@
 		<Title id="fullscreen-title">⚖️ balances</Title>
 		<IconButton action="close" class="material-icons">close</IconButton>
 	</Header>
+
 	<Content id="default-focus-content">
 		<List twoLine avatarList style="margin-bottom: 70px;">
 			{#each balances as [payerName, amount]}
@@ -60,7 +59,9 @@
 					isExpanded={expandedMembers[payerName]}
 					{payerName}
 					{amount}
-					onClickCallback={() => toggleDebtsForMember(payerName)}
+					onClickCallback={() => {
+						toggleDebtsForMember(payerName);
+					}}
 				/>
 				{#if expandedMembers[payerName]}
 					<PaymentsList

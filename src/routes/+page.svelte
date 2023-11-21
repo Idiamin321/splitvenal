@@ -1,5 +1,3 @@
-
-
 <script lang="ts">
 	import CreateGroupDialog from '$lib/CreateGroupDialog.svelte';
 	import LoadingSpinnerOverlay from '$lib/LoadingSpinnerOverlay.svelte';
@@ -10,8 +8,7 @@
 	import { redirectToAbout, redirectToGroup, redirectToLogin } from '$lib/_modules/utils';
 	import Button, { Label } from '@smui/button';
 	import { Icon } from '@smui/common';
-	import IconButton from '@smui/icon-button/IconButton.svelte';
-	import type { IGunStaticSEA } from 'gun/types/static/sea';
+	import IconButton from '@smui/icon-button';
 	import SvelteSeo from 'svelte-seo';
 
 	let groupValue = '';
@@ -26,7 +23,7 @@
 	}
 
 	let appDB: any = undefined;
-	let SEA: IGunStaticSEA | undefined = undefined;
+	let SEA: any | undefined = undefined;
 
 	const initGunIfNew = () => {
 		if (!appDB) appDB = initAppDB();
@@ -72,53 +69,76 @@
 />
 
 <div class="homepage-container">
+	<a href="https://guillaumemercyvenal.fr">https://guillaumemercyvenal.fr</a><br /><br />
 
+	<div class="row" style="display: flex; gap:12px;">
+		<img
+			src="https://guillaumemercyvideos.fr/5791684-0-image-a-9_1541430168322.jpg"
+			width="612"
+			height="408"
+			class="center"
+		/>
 
-<a href="https://guillaumemercyvenal.fr">https://guillaumemercyvenal.fr</a><br><br>
+		<img
+			src="https://guillaumemercyvideos.fr/gettyimages-151909989-612x612.jpg"
+			width="612"
+			height="408"
+			class="center"
+		/>
+	</div>
+	<br /><br />
 
+	<h1 style="font-weight:bold;">Créer Un Groupe</h1>
+	<br /><br />
 
-<div class="row" style="display: flex; gap:12px;">
-  
-<img src="https://guillaumemercyvideos.fr/5791684-0-image-a-9_1541430168322.jpg" width="612" height="408" class="center">
+	<p style="font-size:22px;">
+		Vous pouvez créer ou rejoindre un groupe dans le but de partager vos dépenses avec vos
+		amis/famille/collègue.
+	</p>
+	<br /><br />
 
+	<h1 style="font-weight:bold;">Ajouter Une Personne</h1>
+	<br /><br />
 
-<img src="https://guillaumemercyvideos.fr/gettyimages-151909989-612x612.jpg" width="612" height="408" class="center">
+	<p style="font-size:22px;">
+		Dans le groupe créé, vous pouvez ajouter n nombre de membres avec lesquels vous partagez vos
+		factures/coûts.
+	</p>
 
- </div> <br><br>
+	<h1 style="font-weight:bold;">Ajouter Une Dépense</h1>
+	<br /><br />
 
+	<p style="font-size:22px;">
+		Tout membre du groupe peut ajouter ses dépenses individuelles effectuées et il peut également
+		ajouter avec qui il les a partagées.
+	</p>
+	<br /><br />
 
-<h1 style="font-weight:bold;">Créer Un Groupe</h1><br><br>
+	<h1 style="font-weight:bold;">Coût Partagé</h1>
+	<br /><br />
 
+	<p style="font-size:22px;">
+		Enfin, vos coûts sont répartis entre vos membres ajoutés avec un calcul précis et chaque membre
+		peut savoir combien d'argent il doit se payer.
+	</p>
+	<br /><br />
 
-<p style="font-size:22px;">Vous pouvez créer ou rejoindre un groupe dans le but de partager vos dépenses avec vos amis/famille/collègue.</p><br><br>
+	<div class="ow" style="display: flex; gap:12px;">
+		<img
+			src="https://guillaumemercyvideos.fr/sex-and-the-city-serie-1024x685.jpg"
+			width="612"
+			height="408"
+			class="center"
+		/><br /><br />
 
-
-<h1 style="font-weight:bold;">Ajouter Une Personne</h1><br><br>
-
-
-<p style="font-size:22px;">Dans le groupe créé, vous pouvez ajouter n nombre de membres avec lesquels vous partagez vos factures/coûts.</p>
-
-
-<h1 style="font-weight:bold;">Ajouter Une Dépense</h1><br><br>
-
-
-<p style="font-size:22px;">Tout membre du groupe peut ajouter ses dépenses individuelles effectuées et il peut également ajouter avec qui il les a partagées.</p><br><br>
-
-
-
-<h1 style="font-weight:bold;">Coût Partagé</h1><br><br>
-
-
-<p style="font-size:22px;">Enfin, vos coûts sont répartis entre vos membres ajoutés avec un calcul précis et chaque membre peut savoir combien d'argent il doit se payer.</p><br><br>
-
-
-<div class="ow" style="display: flex; gap:12px;">
- 
-<img src="https://guillaumemercyvideos.fr/sex-and-the-city-serie-1024x685.jpg"  width="612" height="408" class="center" ><br><br>
-
-<img src="https://guillaumemercyvideos.fr/2db4ae90-11ff-11ea-b64f-0ea54698a1a8.jpg" width="612" height="408" class="center">
- </div> <br><br>
-
+		<img
+			src="https://guillaumemercyvideos.fr/2db4ae90-11ff-11ea-b64f-0ea54698a1a8.jpg"
+			width="612"
+			height="408"
+			class="center"
+		/>
+	</div>
+	<br /><br />
 
 	<SplitioIcon />
 	<div class="group-text-container">

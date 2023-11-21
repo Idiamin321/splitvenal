@@ -1,16 +1,3 @@
-<script context="module">
-	/**
-	 * @type {import('@sveltejs/kit').Load}
-	 */
-	export async function load({ page }) {
-		return {
-			props: {
-				groupId: page.params.groupid
-			}
-		};
-	}
-</script>
-
 <script lang="ts">
 	import { initAppDB } from '$lib/_modules/initGun';
 	import { onSecure } from '$lib/_modules/secure';
@@ -19,7 +6,8 @@
 	import Textfield from '@smui/textfield';
 	import { onMount } from 'svelte';
 
-	export let groupId: string;
+	export let data;
+	export let groupId = data.props.groupId;
 
 	let localStorageInfo = { msg: 'error loading info or nothing found by inspector' };
 	let idxDBInfo = { msg: 'error loading info or nothing found by inspector' };

@@ -1,18 +1,3 @@
-<script context="module">
-	/**
-	 * @type {import('@sveltejs/kit').Load}
-	 */
-
-	export async function load({ page, session }) {
-		return {
-			props: {
-				groupId: page.params.groupid,
-				user: session.user
-			}
-		};
-	}
-</script>
-
 <script lang="ts">
 	import AddExpenseDialog from '$lib/AddExpenseDialog.svelte';
 	import AddMemberDialog from '$lib/AddMemberDialog.svelte';
@@ -32,16 +17,15 @@
 	import { getMemberAvatarURL } from '$lib/_modules/utils';
 	import Chip, { Text as ChipText, LeadingIcon, Set } from '@smui/chips';
 	import Fab, { Icon as FabIcon } from '@smui/fab';
+	import { Image } from '@smui/image-list';
 	import List, { Graphic, Item, Meta, Text } from '@smui/list';
-	import Snackbar, { Label, SnackbarComponentDev } from '@smui/snackbar';
+	import Snackbar, { Label } from '@smui/snackbar';
 	import { onMount } from 'svelte';
 	import SvelteSeo from 'svelte-seo';
-	export let user;
-
-	import { session } from '$app/stores';
-	$session.user;
-	export let groupId: string;
-
+	// $session.user;
+	export let data;
+	export let groupId = data.props.groupId;
+	export let user = data.props.user;
 	let selectedMemberName = {};
 	let openEditMemberDialog: boolean = false;
 	let openAddMemberDialog: boolean = false;
@@ -49,7 +33,7 @@
 	let openViewBalancesDialog: boolean = false;
 	let openSyncIssuesDialog: boolean = false;
 	let openGroupNotesDialog: boolean = false;
-	let copiedLinkSnackbar: SnackbarComponentDev;
+	let copiedLinkSnackbar;
 
 	let groupNodeState = GroupNodeStates.Unknown;
 
@@ -161,8 +145,18 @@
 		);
 	});
 
-	const addExpense = async (expenseName: string, expenseAmount: number, memberName: string) => {
-		const memberExists = memberName in $groupStore.members;
+	const addExpense = async (
+		expenseName: string,
+		expenseAmount: number,
+		memberName: string,
+		expenseFor: string,
+		date?: any
+	) => {
+		const members = $groupStore.members;
+
+		// Check if at least one member has the specified name
+		const memberExists = Object.values(members).some((member) => member.name === memberName);
+
 		if (!memberExists) throw SyntaxError;
 		setSecure(
 			$groupDB.get('expenses'),
@@ -170,7 +164,8 @@
 				title: expenseName,
 				amount: expenseAmount,
 				paidBy: memberName,
-				timestamp: Date.now()
+				forWhat: expenseFor,
+				timestamp: date !== '' ? date : Date.now()
 			},
 			$secretKey
 		);
@@ -200,7 +195,6 @@
 		selectedMemberName = memberName;
 		selectedMemberName.key = key;
 		openEditMemberDialog = true;
-		console.log('Member', user);
 	};
 	const putGroupNotes = (noteValue: string, onCompletion: Function) => {
 		let node = $groupDB.get('groupNotes');
@@ -212,6 +206,12 @@
 		(a, b) => b[1].timestamp - a[1].timestamp
 	);
 	$: members = Object.entries($groupStore.members);
+	let bgImage = '';
+	if (user) {
+		const url = user.profilePic;
+		let imageurl = url.replace('upload/', 'upload/w_80,h_80,c_fill/');
+		bgImage = imageurl;
+	}
 </script>
 
 <SvelteSeo
@@ -235,9 +235,22 @@
 <svelte:head>
 	<title>splitio | {$groupStore.groupInfo.name}</title>
 </svelte:head>
-
-<div class="mdc-typography--headline5">{$groupStore.groupInfo.name}</div>
-
+<div class="headline">
+	<div class="mdc-typography--headline5">
+		{$groupStore.groupInfo.name}
+	</div>
+	{#if user}
+		<Image
+			tag="div"
+			style="background-image: url('{bgImage}'); border-radius:10px; width:120px; height:120px"
+		/>
+	{:else}
+		<Image
+			tag="div"
+			style="background-image: url('https://source.boringavatars.com/beam/40$splitneval?colors=4DAB8C,542638,8F244D,C9306B,E86F9E'); border-radius:10px; width:120px; height:120px"
+		/>
+	{/if}
+</div>
 <Set
 	{chips}
 	style="overflow-x: auto; flex-wrap: nowrap; margin-left: -10px; margin-right: -10px"
@@ -254,7 +267,6 @@
 <TransactionsList {transactions} />
 
 <div class="mdc-typography--headline5">🤝 members</div>
-
 <List oneLine avatarList style="margin-bottom: 70px;">
 	{#each members as [key, member]}
 		<Item class="rounded-item">
@@ -331,6 +343,20 @@
 		bottom: 10px;
 		right: 10px;
 		z-index: 1;
+	}
+
+	.headline {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		max-height: 40px;
+		width: 97vw;
+	}
+
+	@media screen and (max-width: 600px) {
+		.headline {
+			max-height: 120px;
+		}
 	}
 
 	* :global(.margins) {

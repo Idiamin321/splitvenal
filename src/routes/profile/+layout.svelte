@@ -1,9 +1,9 @@
 <script lang="ts">
-	import TopAppBar, { Row, Section, AutoAdjust, TopAppBarComponentDev } from '@smui/top-app-bar';
-	import IconButton from '@smui/icon-button';
 	import SplitioIcon from '$lib/SplitioIcon.svelte';
+	import IconButton from '@smui/icon-button';
+	import TopAppBar, { AutoAdjust, Row, Section } from '@smui/top-app-bar';
 
-	let topAppBar: TopAppBarComponentDev;
+	let topAppBar;
 
 	let lightTheme =
 		typeof window === 'undefined' || window.matchMedia('(prefers-color-scheme: light)').matches;
@@ -28,6 +28,9 @@
 			<SplitioIcon isTopApp />
 		</Section>
 		<Section align="end">
+			<form method="POST" action="?/logout">
+				<IconButton class="material-icons user-btn" aria-label="person">person</IconButton>
+			</form>
 			<IconButton on:click={switchTheme} class="material-icons" aria-label="Information"
 				>{lightTheme ? 'light_mode' : 'dark_mode'}</IconButton
 			>
@@ -38,7 +41,7 @@
 	<div class="container">
 		<slot />
 	</div>
-	<div class="mdc-typography--caption footer">Abdoul</div>
+	<div class="mdc-typography--caption footer">Abdoul Gmercy</div>
 </AutoAdjust>
 
 <style>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import CircularProgress from '@smui/circular-progress/CircularProgress.svelte';
+	import CircularProgress from '@smui/circular-progress';
 	export let showOverlay = false;
 </script>
 

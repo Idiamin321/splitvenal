@@ -1,7 +1,6 @@
 <script lang="ts">
 	import SplitioIcon from '$lib/SplitioIcon.svelte';
-	import Button, { Label, Icon } from '@smui/button';
-	import Paper, { Title, Content } from '@smui/paper';
+	import Paper, { Content, Title } from '@smui/paper';
 </script>
 
 <svelte:head>
