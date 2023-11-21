@@ -17,7 +17,7 @@
 	import { getMemberAvatarURL } from '$lib/_modules/utils';
 	import Chip, { Text as ChipText, LeadingIcon, Set } from '@smui/chips';
 	import Fab, { Icon as FabIcon } from '@smui/fab';
-	import { Image, ImageAspectContainer } from '@smui/image-list';
+	import { Image } from '@smui/image-list';
 	import List, { Graphic, Item, Meta, Text } from '@smui/list';
 	import Snackbar, { Label } from '@smui/snackbar';
 	import { onMount } from 'svelte';
@@ -209,7 +209,7 @@
 	let bgImage = '';
 	if (user) {
 		const url = user.profilePic;
-		let imageurl = url.replace('upload/', 'upload/w_40,h_40,c_fill/');
+		let imageurl = url.replace('upload/', 'upload/w_80,h_80,c_fill/');
 		bgImage = imageurl;
 	}
 </script>
@@ -242,15 +242,13 @@
 	{#if user}
 		<Image
 			tag="div"
-			style="background-image: url('{bgImage}'); border-radius:10px; width:40px; height:40px"
+			style="background-image: url('{bgImage}'); border-radius:10px; width:120px; height:120px"
 		/>
 	{:else}
-		<ImageAspectContainer>
-			<Image
-				tag="div"
-				style="background-image: url('https://source.boringavatars.com/beam/40$splitneval?colors=4DAB8C,542638,8F244D,C9306B,E86F9E'); border-radius:10px; width:40px; height:40px"
-			/>
-		</ImageAspectContainer>
+		<Image
+			tag="div"
+			style="background-image: url('https://source.boringavatars.com/beam/40$splitneval?colors=4DAB8C,542638,8F244D,C9306B,E86F9E'); border-radius:10px; width:120px; height:120px"
+		/>
 	{/if}
 </div>
 <Set
@@ -352,7 +350,13 @@
 		flex-direction: row;
 		justify-content: space-between;
 		max-height: 40px;
-		width: 96%;
+		width: 97vw;
+	}
+
+	@media screen and (max-width: 600px) {
+		.headline {
+			max-height: 120px;
+		}
 	}
 
 	* :global(.margins) {
