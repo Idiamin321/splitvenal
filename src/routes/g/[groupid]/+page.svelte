@@ -242,12 +242,12 @@
 	{#if user}
 		<Image
 			tag="div"
-			style="background-image: url('{bgImage}'); border-radius:10px; width:120px; height:120px"
+			style="background-image: url('{bgImage}'); border-radius:10px; width:120px; height:120px; background-repeat: no-repeat; background-size: cover;"
 		/>
 	{:else}
 		<Image
 			tag="div"
-			style="background-image: url('https://source.boringavatars.com/beam/40$splitneval?colors=4DAB8C,542638,8F244D,C9306B,E86F9E'); border-radius:10px; width:120px; height:120px"
+			style="background-image: url('https://source.boringavatars.com/beam/40$splitneval?colors=4DAB8C,542638,8F244D,C9306B,E86F9E'); border-radius:10px; width:120px; height:120px; background-repeat: no-repeat; background-size: cover"
 		/>
 	{/if}
 </div>
