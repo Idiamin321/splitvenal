@@ -9,7 +9,7 @@
 </script>
 
 <div>
-	<Item class={`rounded-item ${isSettlement ? 'settlement-item' : ''}`}>
+	<Item class={`rounded-item ${isSettlement ? 'settlement-item' : ''}`} style="height: 100%;">
 		<Graphic style="text-align: center; width: 1.75rem;">
 			{timestampToShortDate(transaction.timestamp)}
 		</Graphic>
@@ -17,11 +17,13 @@
 			<Text>
 				<PrimaryText>{transaction.title}</PrimaryText>
 				<SecondaryText>€{transaction.amount} by {transaction.paidBy}</SecondaryText>
+				<SecondaryText>Transaction for {transaction.forWhat}</SecondaryText>
 			</Text>
 		{:else}
 			<Text>
 				<PrimaryText>{`💵 paid to €{transaction.receivedBy}`}</PrimaryText>
 				<SecondaryText>€{absRounded(transaction.amount)} from {transaction.paidBy}</SecondaryText>
+				<SecondaryText>Transaction for {transaction.forWhat}</SecondaryText>
 			</Text>
 		{/if}
 		{#if onDeleteCallback}

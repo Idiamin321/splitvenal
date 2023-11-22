@@ -38,7 +38,9 @@ export function absRounded(num: number): string {
 }
 
 export function timestampToShortDate(timestamp: number) {
-	return new Date(timestamp).toLocaleString('en', { month: 'short', day: 'numeric' }).toLowerCase();
+	return new Date(timestamp)
+		.toLocaleString('en', { month: 'short', day: 'numeric', year: 'numeric' })
+		.toLowerCase();
 }
 
 export function redirectToError(msg: string) {
