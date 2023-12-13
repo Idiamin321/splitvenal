@@ -7,6 +7,7 @@ export const handle = async ({ event, resolve }) => {
 
 	if (authCookie) {
 		const token = authCookie.split(' ')[1];
+
 		try {
 			const jwtUser = jwt.verify(token, JWT_ACCESS_SECRET);
 			const user = await db.user.findUnique({
@@ -19,6 +20,7 @@ export const handle = async ({ event, resolve }) => {
 					profilePic: true
 				}
 			});
+
 			if (user) {
 				event.locals.user = user;
 			}

@@ -25,12 +25,15 @@ export async function createUser(email: string, password: string) {
 }
 
 export async function loginUser(email: string, password: string) {
+	console.log('user', email);
+
 	try {
 		const user = await db.user.findUnique({
 			where: {
 				email
 			}
 		});
+
 		if (!user) {
 			return { error: 'User not found' };
 		}
@@ -42,6 +45,7 @@ export async function loginUser(email: string, password: string) {
 
 		return { token };
 	} catch (error) {
+		console.log('user', error);
 		return error;
 	}
 }

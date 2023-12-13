@@ -4,12 +4,17 @@
 	import RecentGroupsList from '$lib/RecentGroupsList.svelte';
 	import SplitioIcon from '$lib/SplitioIcon.svelte';
 	import { getSEA, initAppDB } from '$lib/_modules/initGun';
+	import { deleteGroupFromLocalStorage } from '$lib/_modules/recentGroupsStorage.js';
 	import { putSecure } from '$lib/_modules/secure';
 	import { redirectToAbout, redirectToGroup, redirectToLogin } from '$lib/_modules/utils';
 	import Button, { Label } from '@smui/button';
 	import { Icon } from '@smui/common';
 	import IconButton from '@smui/icon-button';
 	import SvelteSeo from 'svelte-seo';
+
+	export let data;
+
+	export let user = data.props.user;
 
 	let groupValue = '';
 	let openCreateGroupDialog: boolean = false;
@@ -37,6 +42,7 @@
 		const secretKey = '#' + pair.priv;
 		const nodeid = result._.has;
 		let infoNode = appDB.get(nodeid).get('groupInfo');
+
 		putSecure(infoNode, { name: groupName }, secretKey, (ack) => {
 			if (!ack.err) {
 				redirectToGroup(nodeid, secretKey);
@@ -45,6 +51,10 @@
 				showLoadingSpinner = false;
 			}
 		});
+	};
+
+	const deleteGroup = async (nodeid: string, onCompletion?: Function) => {
+		deleteGroupFromLocalStorage(nodeid);
 	};
 </script>
 
@@ -142,7 +152,7 @@
 
 	<SplitioIcon />
 	<div class="group-text-container">
-		<RecentGroupsList />
+		<RecentGroupsList {deleteGroup} {user} />
 		<Button
 			style="border-radius: 17px; margin: 1rem"
 			variant="raised"
