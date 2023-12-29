@@ -60,6 +60,12 @@ export function startSyncInBackground() {
 	}, SYNC_INTERVAL);
 }
 
+export function deleteGroupFromLocalStorage(groupId: string) {
+	const recentGroups = getRecentGroups();
+	const filteredGroups = recentGroups.filter((group) => group.groupId !== groupId);
+	storeAllRecentGroups(filteredGroups);
+}
+
 // function isSameGroup(oldGroup: object, newGroupId: string, newSecretKey: string, newGroupName: string) {
 //     return oldGroup.groupId === newGroupId
 //         && oldGroup.secretKey === newSecretKey
