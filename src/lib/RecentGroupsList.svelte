@@ -16,7 +16,6 @@
 		deleteGroup(id);
 		recentGroups = getRecentGroups();
 	};
-	console.log(user);
 </script>
 
 {#if recentGroups.length !== 0}

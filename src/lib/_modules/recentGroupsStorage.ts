@@ -17,7 +17,6 @@ export async function getRecentGroups(): Promise<object[]> {
 		storeAllRecentGroups(groupsDb);
 		return groupsDb;
 	}
-	console.log(groups);
 
 	return groups;
 }

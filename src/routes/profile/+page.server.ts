@@ -34,7 +34,6 @@ export const actions = {
 		const buffer = Buffer.from(await file.arrayBuffer());
 
 		const photoUrl = await cloudinaryUpload(buffer);
-		console.log(photoUrl);
 		await db.user.update({
 			where: { id: userId },
 			data: {
