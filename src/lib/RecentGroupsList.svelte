@@ -3,12 +3,13 @@
 	import Paper, { Content, Title } from '@smui/paper';
 	import { onMount } from 'svelte';
 	import { slide } from 'svelte/transition';
-	import { getRecentGroups } from './_modules/recentGroupsStorage';
+	import { getRecentGroups, startSyncInBackground } from './_modules/recentGroupsStorage';
 	import { redirectToGroup } from './_modules/utils';
 
 	let recentGroups: object[] = [];
-	onMount(() => {
-		recentGroups = getRecentGroups();
+	onMount(async () => {
+		startSyncInBackground();
+		recentGroups = await getRecentGroups();
 	});
 </script>
 

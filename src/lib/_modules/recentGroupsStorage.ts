@@ -1,5 +1,5 @@
 import { getGroupsFromServer } from '$lib/api/groups/getGroups';
-import { addGroup } from '$lib/db/groups';
+import { postGroupToServer } from '$lib/api/groups/postGroups';
 import { MAX_RECENT_GROUPS_AMNT, RECENT_GROUPS_KEY } from './constants';
 
 export function storeRecentGroup(groupId: string, secretKey: string, groupName: string) {
@@ -10,8 +10,16 @@ export function storeRecentGroup(groupId: string, secretKey: string, groupName: 
 	storeAllRecentGroups(otherGroups);
 }
 
-export function getRecentGroups(): object[] {
-	return JSON.parse(localStorage.getItem(RECENT_GROUPS_KEY) || '[]');
+export async function getRecentGroups(): Promise<object[]> {
+	const groups = JSON.parse(localStorage.getItem(RECENT_GROUPS_KEY) || '[]');
+	if (groups.length === 0) {
+		const groupsDb = await getGroupsFromServer();
+		storeAllRecentGroups(groupsDb);
+		return groupsDb;
+	}
+	console.log(groups);
+
+	return groups;
 }
 
 function storeAllRecentGroups(recentGroups: object[]) {
@@ -19,13 +27,13 @@ function storeAllRecentGroups(recentGroups: object[]) {
 }
 
 export async function syncGroups() {
-	const localGroups: object[] = getRecentGroups();
+	const localGroups: object[] = await getRecentGroups();
 	const dbGroups = await getGroupsFromServer();
 
-	localGroups.forEach((localGroup) => {
+	localGroups.forEach(async (localGroup) => {
 		const existsInDB = dbGroups.some((dbGroup) => dbGroup.groupId === localGroup.groupId);
 		if (!existsInDB) {
-			addGroup(localGroup.groupId, localGroup.secretKey, localGroup.groupName);
+			await postGroupToServer(localGroup.groupId, localGroup.secretKey, localGroup.groupName);
 		}
 	});
 
@@ -41,7 +49,15 @@ export async function syncGroups() {
 	});
 
 	storeAllRecentGroups(localGroups);
-	console.log('Groups synchronized successfully.');
+}
+
+const SYNC_INTERVAL = 3000;
+
+export function startSyncInBackground() {
+	setTimeout(async () => {
+		await syncGroups();
+		console.log('Groups synchronized successfully.');
+	}, SYNC_INTERVAL);
 }
 
 // function isSameGroup(oldGroup: object, newGroupId: string, newSecretKey: string, newGroupName: string) {

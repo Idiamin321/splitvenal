@@ -10,7 +10,7 @@ export async function addGroup(groupId: string, secretKey: string, groupName: st
 	});
 
 	if (existingGroup) {
-		throw new Error('Group with the same groupId already exists');
+		return { message: 'Group with the same groupId already exists' };
 	}
 
 	return prisma.group.create({
