@@ -17,7 +17,6 @@ export async function getRecentGroups(): Promise<object[]> {
 		storeAllRecentGroups(groupsDb);
 		return groupsDb;
 	}
-	console.log(groups);
 
 	return groups;
 }
@@ -56,7 +55,6 @@ const SYNC_INTERVAL = 3000;
 export function startSyncInBackground() {
 	setTimeout(async () => {
 		await syncGroups();
-		console.log('Groups synchronized successfully.');
 	}, SYNC_INTERVAL);
 }
 

@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Dialog, { Title, Content, Actions, InitialFocus } from '@smui/dialog';
 	import Button, { Label } from '@smui/button';
-	import { absRounded, getMemberAvatarURL } from './_modules/utils';
-	import List, { Item, Text, PrimaryText, SecondaryText, Graphic } from '@smui/list';
+	import Dialog, { Actions, Content, InitialFocus, Title } from '@smui/dialog';
+	import List, { Graphic, Item, PrimaryText, SecondaryText, Text } from '@smui/list';
 	import { recordPayment } from './_modules/money';
+	import { absRounded, getMemberAvatarURL } from './_modules/utils';
 
 	export let openDialog = false;
 	export let payerName: string = '';
@@ -22,7 +22,7 @@
 	<Title id="over-focus-title">💰 record payment</Title>
 	<Content id="over-focus-content">
 		<List twoLine avatarList>
-			<Item on:click={() => console.log('hi')}>
+			<Item>
 				<Graphic style="background-image: url({getMemberAvatarURL(payerName)});" />
 				<Text>
 					<PrimaryText>
