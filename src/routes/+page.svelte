@@ -6,10 +6,12 @@
 	import { getSEA, initAppDB } from '$lib/_modules/initGun';
 	import { putSecure } from '$lib/_modules/secure';
 	import { redirectToAbout, redirectToGroup, redirectToLogin } from '$lib/_modules/utils';
+	import { postGroupToServer } from '$lib/api/groups/postGroups';
 	import Button, { Label } from '@smui/button';
 	import { Icon } from '@smui/common';
 	import IconButton from '@smui/icon-button';
 	import SvelteSeo from 'svelte-seo';
+	export const ssr = true;
 
 	let groupValue = '';
 	let openCreateGroupDialog: boolean = false;
@@ -37,6 +39,14 @@
 		const secretKey = '#' + pair.priv;
 		const nodeid = result._.has;
 		let infoNode = appDB.get(nodeid).get('groupInfo');
+
+		try {
+			await postGroupToServer(nodeid, secretKey, groupName);
+		} catch (error) {
+			console.error('Error saving group to database:', error);
+			// Handle error saving to the database, if needed
+		}
+
 		putSecure(infoNode, { name: groupName }, secretKey, (ack) => {
 			if (!ack.err) {
 				redirectToGroup(nodeid, secretKey);
