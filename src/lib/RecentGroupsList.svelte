@@ -8,9 +8,9 @@
 	export let deleteGroup: Function = () => {};
 	export let user: any;
 	let recentGroups: object[] = [];
-	onMount(async () => {
+	onMount(() => {
 		startSyncInBackground();
-		recentGroups = await getRecentGroups();
+		recentGroups = getRecentGroups();
 	});
 	let updateGroups = (id) => {
 		deleteGroup(id);
@@ -24,8 +24,8 @@
 			<Title>🕐 recent groups</Title>
 			<Content>
 				{#each recentGroups as item}
-					<Item class="rounded-item" on:click={() => redirectToGroup(item.groupId, item.secretKey)}>
-						<Text>
+					<Item class="rounded-item">
+						<Text on:click={() => redirectToGroup(item.groupId, item.secretKey)}>
 							{item.groupName}
 							<p class="footer">- id: {item.groupId}</p>
 						</Text>

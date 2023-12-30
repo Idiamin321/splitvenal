@@ -1,6 +1,6 @@
 <script lang="ts">
 	import SplitioIcon from '$lib/SplitioIcon.svelte';
-	import { getRecentGroups } from '$lib/_modules/recentGroupsStorage.js';
+	import { getRecentGroups, startSyncInBackground } from '$lib/_modules/recentGroupsStorage.js';
 	import { redirectToProfile } from '$lib/_modules/utils.js';
 	import IconButton from '@smui/icon-button';
 	import TopAppBar, { AutoAdjust, Row, Section } from '@smui/top-app-bar';
@@ -8,6 +8,7 @@
 
 	let recentGroups: object[] = [];
 	onMount(() => {
+		startSyncInBackground();
 		recentGroups = getRecentGroups();
 	});
 	let topAppBar;

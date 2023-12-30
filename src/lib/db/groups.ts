@@ -25,3 +25,26 @@ export async function addGroup(groupId: string, secretKey: string, groupName: st
 export async function getGroups() {
 	return prisma.group.findMany();
 }
+
+export async function deleteGroups(groupId) {
+	const existingGroup = await prisma.group.findUnique({
+		where: {
+			groupId: groupId
+		}
+	});
+
+	if (!existingGroup) {
+		return {
+			status: 404,
+			body: { message: 'Group Not found ' + JSON.stringify(existingGroup) }
+		};
+	}
+	await prisma.group.delete({
+		where: { groupId: groupId }
+	});
+
+	return {
+		status: 200,
+		body: { message: `Group with ID ${groupId} deleted successfully.` }
+	};
+}
