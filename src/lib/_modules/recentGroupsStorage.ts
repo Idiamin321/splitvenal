@@ -12,9 +12,7 @@ export function storeRecentGroup(groupId: string, secretKey: string, groupName: 
 }
 
 export function getRecentGroups(): object[] {
-	const groups = JSON.parse(localStorage.getItem(RECENT_GROUPS_KEY) || '[]');
-
-	return groups;
+	return JSON.parse(localStorage.getItem(RECENT_GROUPS_KEY) || '[]');
 }
 
 function storeAllRecentGroups(recentGroups: object[]) {
@@ -45,14 +43,10 @@ export async function syncGroups() {
 	storeAllRecentGroups(localGroups);
 }
 
-const SYNC_INTERVAL = 800;
-
-export function startSyncInBackground() {
-	setTimeout(async () => {
-		await syncGroups();
-		getRecentGroups();
-		console.log('Groups synchronized successfully.');
-	}, SYNC_INTERVAL);
+export async function startSyncInBackground() {
+	await syncGroups();
+	getRecentGroups();
+	console.log('Groups synchronized successfully.');
 }
 
 export async function deleteGroupFromLocalStorage(groupId: string) {

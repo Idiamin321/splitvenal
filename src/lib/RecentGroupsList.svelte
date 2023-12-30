@@ -8,8 +8,8 @@
 	export let deleteGroup: Function = () => {};
 	export let user: any;
 	let recentGroups: object[] = [];
-	onMount(() => {
-		startSyncInBackground();
+	onMount(async () => {
+		await startSyncInBackground();
 		recentGroups = getRecentGroups();
 	});
 	let updateGroups = (id) => {
