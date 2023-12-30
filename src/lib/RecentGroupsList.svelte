@@ -3,19 +3,22 @@
 	import Paper, { Content, Title } from '@smui/paper';
 	import { onMount } from 'svelte';
 	import { slide } from 'svelte/transition';
-	import { getRecentGroups } from './_modules/recentGroupsStorage';
+	import {
+		deleteGroupFromLocalStorage,
+		getRecentGroups,
+		startSyncInBackground
+	} from './_modules/recentGroupsStorage';
 	import { redirectToGroup } from './_modules/utils';
-	export let deleteGroup: Function = () => {};
 	export let user: any;
 	let recentGroups: object[] = [];
-	onMount(() => {
+	onMount(async () => {
+		await startSyncInBackground();
 		recentGroups = getRecentGroups();
 	});
-	let updateGroups = (id) => {
-		deleteGroup(id);
+	let updateGroups = async (nodeid: string, onCompletion?: Function) => {
+		await deleteGroupFromLocalStorage(nodeid);
 		recentGroups = getRecentGroups();
 	};
-	console.log(user);
 </script>
 
 {#if recentGroups.length !== 0}
@@ -24,8 +27,8 @@
 			<Title>🕐 recent groups</Title>
 			<Content>
 				{#each recentGroups as item}
-					<Item class="rounded-item" on:click={() => redirectToGroup(item.groupId, item.secretKey)}>
-						<Text>
+					<Item class="rounded-item">
+						<Text on:click={() => redirectToGroup(item.groupId, item.secretKey)}>
 							{item.groupName}
 							<p class="footer">- id: {item.groupId}</p>
 						</Text>

@@ -4,9 +4,9 @@
 	import RecentGroupsList from '$lib/RecentGroupsList.svelte';
 	import SplitioIcon from '$lib/SplitioIcon.svelte';
 	import { getSEA, initAppDB } from '$lib/_modules/initGun';
-	import { deleteGroupFromLocalStorage } from '$lib/_modules/recentGroupsStorage.js';
 	import { putSecure } from '$lib/_modules/secure';
 	import { redirectToAbout, redirectToGroup, redirectToLogin } from '$lib/_modules/utils';
+	import { postGroupToServer } from '$lib/api/groups/postGroups';
 	import Button, { Label } from '@smui/button';
 	import { Icon } from '@smui/common';
 	import IconButton from '@smui/icon-button';
@@ -43,6 +43,13 @@
 		const nodeid = result._.has;
 		let infoNode = appDB.get(nodeid).get('groupInfo');
 
+		try {
+			await postGroupToServer(nodeid, secretKey, groupName);
+		} catch (error) {
+			console.error('Error saving group to database:', error);
+			// Handle error saving to the database, if needed
+		}
+
 		putSecure(infoNode, { name: groupName }, secretKey, (ack) => {
 			if (!ack.err) {
 				redirectToGroup(nodeid, secretKey);
@@ -51,10 +58,6 @@
 				showLoadingSpinner = false;
 			}
 		});
-	};
-
-	const deleteGroup = async (nodeid: string, onCompletion?: Function) => {
-		deleteGroupFromLocalStorage(nodeid);
 	};
 </script>
 
@@ -152,7 +155,7 @@
 
 	<SplitioIcon />
 	<div class="group-text-container">
-		<RecentGroupsList {deleteGroup} {user} />
+		<RecentGroupsList {user} />
 		<Button
 			style="border-radius: 17px; margin: 1rem"
 			variant="raised"

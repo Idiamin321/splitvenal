@@ -25,8 +25,6 @@ export async function createUser(email: string, password: string) {
 }
 
 export async function loginUser(email: string, password: string) {
-	console.log('user', email);
-
 	try {
 		const user = await db.user.findUnique({
 			where: {

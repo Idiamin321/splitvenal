@@ -22,6 +22,7 @@
 	import Snackbar, { Label } from '@smui/snackbar';
 	import { onMount } from 'svelte';
 	import SvelteSeo from 'svelte-seo';
+
 	// $session.user;
 	export let data;
 	export let groupId = data.props.groupId;
