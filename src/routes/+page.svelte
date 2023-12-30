@@ -16,7 +16,6 @@
 	export let data;
 
 	export let user = data.props.user;
-	export const ssr = true;
 
 	let groupValue = '';
 	let openCreateGroupDialog: boolean = false;

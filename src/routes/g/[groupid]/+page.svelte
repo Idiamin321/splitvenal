@@ -23,9 +23,6 @@
 	import { onMount } from 'svelte';
 	import SvelteSeo from 'svelte-seo';
 
-	export const ssr = true;
-	export const csr = true;
-
 	// $session.user;
 	export let data;
 	export let groupId = data.props.groupId;
