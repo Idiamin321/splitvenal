@@ -4,7 +4,6 @@
 	import RecentGroupsList from '$lib/RecentGroupsList.svelte';
 	import SplitioIcon from '$lib/SplitioIcon.svelte';
 	import { getSEA, initAppDB } from '$lib/_modules/initGun';
-	import { deleteGroupFromLocalStorage } from '$lib/_modules/recentGroupsStorage.js';
 	import { putSecure } from '$lib/_modules/secure';
 	import { redirectToAbout, redirectToGroup, redirectToLogin } from '$lib/_modules/utils';
 	import { postGroupToServer } from '$lib/api/groups/postGroups';
@@ -59,10 +58,6 @@
 				showLoadingSpinner = false;
 			}
 		});
-	};
-
-	const deleteGroup = async (nodeid: string, onCompletion?: Function) => {
-		deleteGroupFromLocalStorage(nodeid);
 	};
 </script>
 
@@ -160,7 +155,7 @@
 
 	<SplitioIcon />
 	<div class="group-text-container">
-		<RecentGroupsList {deleteGroup} {user} />
+		<RecentGroupsList {user} />
 		<Button
 			style="border-radius: 17px; margin: 1rem"
 			variant="raised"

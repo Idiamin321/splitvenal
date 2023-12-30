@@ -3,17 +3,20 @@
 	import Paper, { Content, Title } from '@smui/paper';
 	import { onMount } from 'svelte';
 	import { slide } from 'svelte/transition';
-	import { getRecentGroups, startSyncInBackground } from './_modules/recentGroupsStorage';
+	import {
+		deleteGroupFromLocalStorage,
+		getRecentGroups,
+		startSyncInBackground
+	} from './_modules/recentGroupsStorage';
 	import { redirectToGroup } from './_modules/utils';
-	export let deleteGroup: Function = () => {};
 	export let user: any;
 	let recentGroups: object[] = [];
 	onMount(async () => {
 		await startSyncInBackground();
 		recentGroups = getRecentGroups();
 	});
-	let updateGroups = (id) => {
-		deleteGroup(id);
+	let updateGroups = async (nodeid: string, onCompletion?: Function) => {
+		await deleteGroupFromLocalStorage(nodeid);
 		recentGroups = getRecentGroups();
 	};
 </script>
