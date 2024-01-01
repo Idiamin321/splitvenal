@@ -22,13 +22,7 @@ function storeAllRecentGroups(recentGroups: object[]) {
 export async function syncGroups() {
 	const localGroups: object[] = getRecentGroups();
 	const dbGroups = await getGroupsFromServer();
-	localGroups.forEach(async (localGroup) => {
-		const existsInDB = dbGroups.some((dbGroup) => dbGroup.groupId === localGroup.groupId);
-		if (!existsInDB) {
-			await postGroupToServer(localGroup.groupId, localGroup.secretKey, localGroup.groupName);
-		}
-	});
-
+	
 	dbGroups.forEach((dbGroup) => {
 		const existsLocally = localGroups.some((localGroup) => localGroup.groupId === dbGroup.groupId);
 		if (!existsLocally) {
