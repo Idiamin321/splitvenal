@@ -1,6 +1,6 @@
 <p align="center">
     <img alt="splitio" height="75" src="./static/favicon.png">
-    <h1 align="center">Mini script éducatif pour les jeunes feignasse confectionner par Idi 🦶🏻</h1>
+    <h1 align="center">Mini script De facture </h1>
 </p>
 
 
